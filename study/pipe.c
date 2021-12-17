@@ -36,3 +36,5 @@ int	main(int argc, char **argv)
 		printf("got from child process %d\n", y);
 	}
 }
+
+// nao percebi muito bem

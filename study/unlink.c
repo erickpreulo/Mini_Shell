@@ -16,4 +16,4 @@ int	main(void)
 	return (0);
 }
 
-//linkar uma pasta em outra. Provavelmente para linkar a pasta bin.
+//linkar uma pasta em outra. Provavelmente para linkar a pasta bin. Obs: so´ temos autorizaçao para usar o unlink.

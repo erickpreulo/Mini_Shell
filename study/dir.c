@@ -1,13 +1,22 @@
-#include <sys/types.h>
 #include <stdio.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <time.h>
-#include <sys/wait.h>
-#include <fcntl.h>
+#include <string.h>
+#include <dirent.h>
 
+// Assim eu verifico todos os arquivos que estao na pasta. 
 int		main(int argc, char **argv)
 {
-	
+	DIR* dir = opendir(".");
+	if (dir == NULL)
+	{
+		return 1;
+	}
+
+	struct dirent* entity;
+	while(entity != NULL)
+	{
+		printf("%hhd %s\n", entity->d_type, entity->d_name);
+		entity = readdir(dir);
+	}
+	closedir(dir);
+	return 0;
 }
