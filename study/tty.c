@@ -29,7 +29,7 @@ char *myttyname(int fd)
 	
 	while ((d = readdir(dp)) != NULL)
 	{
-		if (snprintf(path, sizeof path, "%s/%s", DEV, d->d_name) < sizeof path)
+		if (snprintf(path, sizeof path, "%s/%s", DEV, d->d_name) < sizeof path) // o erro esta aqui!
 		{
 			if (stat(path, &stdev) == 0 && stdev.st_dev == stin.st_dev && stdev.st_ino == stin.st_ino)
 				break;
@@ -59,3 +59,4 @@ int		main(void)
 
 // The isatty() function tests whether fd is an open file descripto referring to a terminal.
 
+// pesquisar o que a ttyslot faz

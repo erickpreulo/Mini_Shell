@@ -7,3 +7,5 @@ int		main(void)
 	printf("Env_Variable:\n%s\n", env_variable);
 	return (0);
 }
+
+//Eu consigo ver encontrar as pastas das funcoes do sistema.
