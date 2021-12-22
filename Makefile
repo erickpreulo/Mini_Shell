@@ -6,15 +6,15 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 11:37:32 by egomes            #+#    #+#              #
-#    Updated: 2021/11/15 11:41:50 by egomes           ###   ########.fr        #
+#    Updated: 2021/12/20 20:24:51 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = mini_shell.c src/gnl.c
+SRC = mini_shell.c src/*/*
 
 NAME = mini_shell
 
-INCLUD = -I .
+INCLUD = -I headers
 
 CC = gcc
 
@@ -28,7 +28,7 @@ AR = ar rcs
 OBJ = $(SRC:.c=.o)
 
 $(NAME):	$(OBJ)
-			@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+			@$(CC) $(CFLAGS) $(INCLUD) $(OBJ) -o $(NAME)
 			
 all:		$(NAME)
 

@@ -3,7 +3,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-/* esta funçao cerve para executar um programa dentro de outro programa.
+/* esta funçao serve para executar um programa dentro de outro programa.
 
 execve () executa o programa referido pelo nome do caminho . Esse
 	faz com que o programa que está sendo executado pela chamada
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 
 	char cmd[] = "/bin/ls";
 
-	char *argVec[] = {"ls", NULL};
+	char *argVec[] = {"ls", "-1", NULL};
 	char *envVec[] = {NULL};
 
 	printf("Start to execve call %s: \n", cmd);

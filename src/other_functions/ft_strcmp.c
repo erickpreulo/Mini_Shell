@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_shell.h                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/11/12 16:22:09 by acanterg         ###   ########.fr       */
+/*   Created: 2021/12/20 20:19:39 by egomes            #+#    #+#             */
+/*   Updated: 2021/12/21 20:02:38 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINI_SHELL_H
-# define MINI_SHELL_H
+int		ft_strcmp(char *s1, char *s2)
+{
+	int i;
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-int		get_next_line(char **line);
-
-#endif
+	i = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
