@@ -1,19 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/22 09:52:11 by egomes            #+#    #+#             */
+/*   Updated: 2021/12/22 10:44:11 by egomes           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_shell.h"
 
 int	ls(char **argv)
 {
-	//pid_t childpid = fork();
-
-	char cmd[] = "/bin/ls";
-	char **argVec = argv; //argv[0] = ls  | argv[1] = -la | argv[2] = null
-	char *envVec[] = {NULL};
-	fork();
-	execve(cmd, argVec, envVec);
-/* 	if (execve(cmd, argVec, envVec) == -1)
+	pid_t pid1;
+	char *cmd;
+	int status;
+	
+	cmd = "/bin/ls";
+	pid1 = fork();
+	waitpid(pid1, &status,0);
+	if (pid1 == 0)
 	{
-		perror("error");
-		return (1);
+		if (execve(cmd, argv, NULL) == 0)
+		{
+			printf("Error execve\n");
+			return (1);
+		}
 	}
-	printf("erro final."); */
 	return (0);
 }
