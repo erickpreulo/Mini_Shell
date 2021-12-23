@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/12/22 11:47:33 by egomes           ###   ########.fr       */
+/*   Updated: 2021/12/22 20:30:09 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@
 #include <fcntl.h>
 
 int	get_next_line(char **line);
-int	ls(char **argv);
+int	bin(char **argv, int i);
 int	pwd(char **argv);
-int	echo(char **argv);
 int	null_buffer(char *buffer);
 int	ft_strcmp(char *s1, char *s2);
 char		**ft_split(char const *s, char c);
+size_t	ft_strlen(const char *str);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	*ft_strjoin(char const *s1, char const *s2);
+int	usr_bin(char **argv);
+int	touch(char *str);
+int	find_arrow(char **argv);
 
 #endif

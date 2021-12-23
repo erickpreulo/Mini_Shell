@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 09:52:11 by egomes            #+#    #+#             */
-/*   Updated: 2021/12/22 10:49:27 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/12 15:11:51 by egomes            #+#    #+#             */
+/*   Updated: 2021/12/22 16:41:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	pwd(char **argv)
+size_t	ft_strlen(const char *str)
 {
-	pid_t pid1;
-	char *cmd;
-    int status;
+	size_t len;
 
-	cmd = "/bin/pwd";
-	pid1 = fork();
-	waitpid(pid1, &status,0);
-	if (pid1 == 0)
-	{
-		if (execve(cmd, argv, NULL) == 0)
-		{
-			printf("Error execve\n");
-			return (1);
-		}
-	}
-	return (0);
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }
