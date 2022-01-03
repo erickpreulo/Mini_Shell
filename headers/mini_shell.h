@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2021/12/22 20:30:09 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/03 12:30:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
+# include <readline/readline.h>
+# include <readline/history.h>
+
+# include <signal.h>
+
 int	get_next_line(char **line);
 int	bin(char **argv, int i);
 int	pwd(char **argv);
@@ -34,5 +39,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int	usr_bin(char **argv);
 int	touch(char *str);
 int	find_arrow(char **argv);
+int	ft_execve(char **argv, int i, char *str);
 
 #endif

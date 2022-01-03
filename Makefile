@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 11:37:32 by egomes            #+#    #+#              #
-#    Updated: 2021/12/22 11:49:59 by egomes           ###   ########.fr        #
+#    Updated: 2021/12/23 14:07:44 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ AR = ar rcs
 OBJ = $(SRC:.c=.o)
 
 $(NAME):	
-			@$(CC) $(CFLAGS)  $(INCLUD) $(SRC) -o $(NAME)
+			@$(CC) $(CFLAGS)  $(INCLUD) $(SRC) -lreadline -I .brew/opt/readline/include -o $(NAME)
 			
 all:		$(NAME)
 
