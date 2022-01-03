@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bin.c                                              :+:      :+:    :+:   */
+/*   ft_touch.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 09:52:11 by egomes            #+#    #+#             */
-/*   Updated: 2021/12/23 04:23:25 by egomes           ###   ########.fr       */
+/*   Created: 2021/12/22 18:31:30 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/03 15:38:42 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-/*
-Funçoes da bin :
-chmod dash df expr ksh ln mv pwd sh sync unlink bash cp	date
-echo hostname launchctl ls	pax	rm sleep tcsh wait4path cat
-csh	dd ed kill	link mkdir ps rmdir	stty test zsh
-*/
-int	bin(char **argv, int i)
+int	find_arrow(char **argv)
+{
+	int i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (argv[i][0] == '>' && argv[i][1] == '\0')
+			return (i + 1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_touch(char *str)
 {
 	pid_t pid1;
 	char *cmd;
 	int status;
-	int fd;
 
-	cmd = ft_strjoin("/bin/", argv[0]);
+	char *argVec[] = {"touch", str , NULL};
+	cmd = "/usr/bin/touch";
 	pid1 = fork();
 	waitpid(pid1, &status,0);
 	if (pid1 == 0)
 	{
-		if (argv[i - 1])
-		{
-			fd = open(argv[i], O_WRONLY);
-			dup2(fd, 1);
-			argv[i - 1] = NULL;
-		}
-		if (execve(cmd, argv, NULL) == -1)
-			return (0);
+		if (execve(cmd, argVec, NULL) == -1)
+			printf("Error touch\n");
 	}
 	return (1);
 }

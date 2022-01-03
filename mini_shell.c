@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/03 12:37:47 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/03 15:51:01 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	select_cmd(char **command)
 	}
 	i = find_arrow(command);
 	if (i != 0)
-		touch(command[i]);
+		ft_touch(command[i]);
 	if (ft_strcmp(command[0], "pwd") == 0)
-		ft_execve(command, i, "/bin/pwd");
+		ft_pwd(command, i);
 	else if (ft_strcmp(command[0], "ls") == 0)
 		ft_execve(command, i, "/bin/ls");
 	else if (ft_strcmp(command[0], "echo") == 0)
-		ft_execve(command, i, "/bin/echo");
+		ft_echo(command, i);
 	else if (ft_strcmp(command[0], "export") == 0)
-		ft_execve(command, i, "/usr/bin/export");
+		ft_export(command, i);
 	else if (ft_strcmp(command[0], "unset") == 0)
-		ft_execve(command, i, "/usr/bin/unset");
+		ft_unset(command, i);
 	else if (ft_strcmp(command[0], "env") == 0)
-		ft_execve(command, i, "/usr/bin/env");
+		ft_env(command, i);
 	return (0);
 }
 
@@ -73,7 +73,6 @@ void    sig_handler(int signum)
 
 int main(void)
 {
-	//int r;
 	char *line;
 	char **command;
 
@@ -88,18 +87,5 @@ int main(void)
 				printf("%s not found\n", command[0]);
 		}
     }
-
-/* 	line = NULL;
-	write(1, "Cyber38@TM % ", 14);
-	while ((r = get_next_line(&line)) > 0)
-	{
-		command = ft_split(line, ' ');
-		if (select_cmd(command))
-		{
-			printf("%s not found\n", command[0]);
-		}
-		free(line);
-		write(1, "Cyber38@TM % ", 14);
-	} */
 	free(line);
 }

@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   usr_bin.c                                          :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 09:52:11 by egomes            #+#    #+#             */
-/*   Updated: 2021/12/23 12:52:29 by egomes           ###   ########.fr       */
+/*   Created: 2022/01/03 15:28:50 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/03 15:36:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	usr_bin(char **argv)
+int	ft_echo(char **command, int i)
 {
-	pid_t pid1;
-	char *cmd;
-	int status;
-
-	cmd = ft_strjoin("/usr/bin/", argv[0]);
-	pid1 = fork();
-	waitpid(pid1, &status,0);
-	if (pid1 == 0)
-	{
-		if (execve(cmd, argv, NULL) == -1)
-			return (0);
-	}
-	return (1);
+	if (ft_execve(command, i, "/bin/echo"))
+		return (1);
+	return (0);
 }

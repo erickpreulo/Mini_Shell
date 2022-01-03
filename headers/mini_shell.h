@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/03 12:30:16 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/03 15:42:41 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,26 @@
 
 # include <signal.h>
 
+
+// ******   SRC   ****** 
+
+// ****    main_functions   ****
+
+int	ft_touch(char *str);
+int	ft_echo(char **command, int i);
+int	ft_env(char **command, int i);
+int	ft_export(char **command, int i);
+int	ft_pwd(char **command, int i);
+int	ft_unset(char **command, int i);
+
+// ****    other_functions   ****
+
 int	get_next_line(char **line);
-int	bin(char **argv, int i);
-int	pwd(char **argv);
-int	null_buffer(char *buffer);
 int	ft_strcmp(char *s1, char *s2);
-char		**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
-int	usr_bin(char **argv);
-int	touch(char *str);
 int	find_arrow(char **argv);
 int	ft_execve(char **argv, int i, char *str);
 
