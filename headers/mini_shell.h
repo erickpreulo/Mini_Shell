@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/03 15:42:41 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/04 05:11:07 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_env(char **command, int i);
 int	ft_export(char **command, int i);
 int	ft_pwd(char **command, int i);
 int	ft_unset(char **command, int i);
+void	ft_access(char **command, int i);
 
 // ****    other_functions   ****
 

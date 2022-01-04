@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/03 15:51:01 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/04 05:24:23 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	select_cmd(char **command)
 		ft_touch(command[i]);
 	if (ft_strcmp(command[0], "pwd") == 0)
 		ft_pwd(command, i);
-	else if (ft_strcmp(command[0], "ls") == 0)
-		ft_execve(command, i, "/bin/ls");
 	else if (ft_strcmp(command[0], "echo") == 0)
 		ft_echo(command, i);
 	else if (ft_strcmp(command[0], "export") == 0)
@@ -38,6 +36,8 @@ int	select_cmd(char **command)
 		ft_unset(command, i);
 	else if (ft_strcmp(command[0], "env") == 0)
 		ft_env(command, i);
+	else
+		ft_access(command, i);
 	return (0);
 }
 

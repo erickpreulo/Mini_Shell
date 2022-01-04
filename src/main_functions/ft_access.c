@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execve.c                                        :+:      :+:    :+:   */
+/*   ft_access.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 12:22:49 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/03 15:56:17 by egomes           ###   ########.fr       */
+/*   Created: 2022/01/04 05:10:37 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/04 05:21:28 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_execve(char **argv, int i, char *cmd)
+void		ft_access(char **command, int i)
 {
-	pid_t pid1;
-	int status;
-	int fd;
+	char *cmd1;
+	char *cmd2;
+	char *err;
 
-	pid1 = fork();
-	waitpid(pid1, &status,0);
-	if (pid1 == 0)
-	{
-		if (argv[i - 1])
-		{
-			fd = open(argv[i], O_WRONLY);
-			dup2(fd, 1);
-			argv[i - 1] = NULL;
-		}
-		if (execve(cmd, argv, NULL) == 0)
-			return (1);
-	}
-	return (0);
+	cmd1 = ft_strjoin("/bin/", command[0]);
+	cmd2 = ft_strjoin("usr/bin/", command[0]);
+	err = ft_strjoin(command[0], " was not found in /bin/ or /usr/bin/");
+
+	if (access(cmd1, F_OK) == 0)
+		ft_execve(command, i, cmd1);
+	else if (access(cmd2, F_OK) == 0)
+		ft_execve(command, i, cmd2);
+	else
+		printf("%s\n", err);
 }
