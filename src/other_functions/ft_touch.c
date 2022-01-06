@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_touch.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 18:31:30 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/03 15:38:42 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/06 14:19:19 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,12 @@ int	find_arrow(char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (argv[i][0] == '>' && argv[i][1] == '\0')
+		if (ft_strcmp(argv[i], out_file) == 0
+			|| ft_strcmp(argv[i], apend_file) == 0)
+		{
 			return (i + 1);
+			is_out_file = 1;
 		i++;
 	}
 	return (0);
-}
-
-int	ft_touch(char *str)
-{
-	pid_t pid1;
-	char *cmd;
-	int status;
-
-	char *argVec[] = {"touch", str , NULL};
-	cmd = "/usr/bin/touch";
-	pid1 = fork();
-	waitpid(pid1, &status,0);
-	if (pid1 == 0)
-	{
-		if (execve(cmd, argVec, NULL) == -1)
-			printf("Error touch\n");
-	}
-	return (1);
 }

@@ -6,11 +6,22 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/04 05:24:23 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/06 14:54:55 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
+
+t_mini_shell *get_ms()
+{
+	static t_mini_shell *ms;
+	
+	if (!ms)
+		ms = malloc(sizeof(ms));
+	if (!ms)
+		exit(0);
+	return (ms);
+}
 
 int	select_cmd(char **command)
 {
@@ -24,8 +35,6 @@ int	select_cmd(char **command)
 		return (0);
 	}
 	i = find_arrow(command);
-	if (i != 0)
-		ft_touch(command[i]);
 	if (ft_strcmp(command[0], "pwd") == 0)
 		ft_pwd(command, i);
 	else if (ft_strcmp(command[0], "echo") == 0)
