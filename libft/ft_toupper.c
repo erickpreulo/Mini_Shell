@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:28 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/10 22:55:37 by acanterg          #+#    #+#             */
+/*   Updated: 2021/02/18 16:21:45 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_shell.h"
+#include "libft.h"
 
-int	ft_export(char **command)
+int		ft_toupper(int c)
 {
-	if (ft_execve(command, "/usr/bin/export"))
-		return (1);
-	return (0);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }

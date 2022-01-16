@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:28 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/18 16:22:14 by acanterg          #+#    #+#             */
+/*   Updated: 2021/02/18 16:33:22 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_shell.h"
+#include "libft.h"
 
-int	ft_export(char **command)
+t_list	*ft_lstnew(void *content)
 {
-	if (ft_execve(command, "/usr/bin/export"))
-		return (1);
-	return (0);
+	t_list	*item;
+
+	if (!(item = malloc(sizeof(t_list))))
+		return (NULL);
+	item->content = content;
+	item->next = NULL;
+	return (item);
 }

@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_touch.c                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 18:31:30 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 14:19:19 by acanterg         ###   ########.fr       */
+/*   Created: 2021/02/10 22:50:28 by acanterg          #+#    #+#             */
+/*   Updated: 2021/02/17 14:44:43 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_shell.h"
+#include "libft.h"
 
-int	find_arrow(char **argv)
+void	ft_bzero(void *s, size_t n)
 {
-	int i;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (ft_strcmp(argv[i], out_file) == 0
-			|| ft_strcmp(argv[i], apend_file) == 0)
-		{
-			return (i + 1);
-			is_out_file = 1;
-		i++;
-	}
-	return (0);
+	ft_memset(s, 0, n);
 }

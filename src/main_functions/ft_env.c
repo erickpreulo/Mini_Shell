@@ -6,15 +6,15 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:25:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/03 15:36:12 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/06 19:25:14 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_env(char **command, int i)
+int	ft_env(char **command)
 {
-	if (ft_execve(command, i, "/usr/bin/env"))
+	if (ft_execve(command, "/usr/bin/env"))
 		return (1);
 	return (0);
 }

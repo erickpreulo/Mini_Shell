@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   get_type.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:28 by egomes           ###   ########.fr       */
+/*   Created: 2022/01/13 16:30:47 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/13 22:52:02 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_export(char **command)
+type_sep get_type(char *str)
 {
-	if (ft_execve(command, "/usr/bin/export"))
-		return (1);
-	return (0);
+	if (str[0] == '|' && str[1] == ' ')
+		return (T_PIPE);
+	if (str[0] == '<' && str[1] == ' ')
+		return (T_FILE_IN);
+	if (str[0] == '>' && str[1] == ' ')
+		return (T_FILE_OUT);
+	if (str[0] == '>' && str[1] == '>' && str[2] == ' ')
+		return (T_FILE_APPEND);
+	return (T_CMD);
 }

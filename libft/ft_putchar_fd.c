@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:28 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/15 12:24:03 by acanterg          #+#    #+#             */
+/*   Updated: 2021/02/17 14:52:09 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_shell.h"
+#include "libft.h"
 
-int	ft_export(char **command)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (ft_execve(command, "/usr/bin/export"))
-		return (1);
-	return (0);
+	write(fd, &c, 1);
 }

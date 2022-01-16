@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:28 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/10 22:56:09 by acanterg          #+#    #+#             */
+/*   Updated: 2021/02/17 14:45:19 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_shell.h"
+#include "libft.h"
 
-int	ft_export(char **command)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	if (ft_execve(command, "/usr/bin/export"))
-		return (1);
-	return (0);
+	void *p;
+
+	if (!(p = malloc(nmemb * size)))
+		return (NULL);
+	ft_bzero(p, nmemb * size);
+	return (p);
 }

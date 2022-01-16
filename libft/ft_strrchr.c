@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/11 20:44:03 by egomes            #+#    #+#             */
-/*   Updated: 2021/12/22 20:17:03 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/11 00:08:58 by acanterg          #+#    #+#             */
+/*   Updated: 2021/02/17 17:14:23 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_shell.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t count;
+	char	*str;
 
-	count = 0;
-	while (count < n)
-	{
-		((unsigned char*)dst)[count] = ((unsigned char*)src)[count];
-		count++;
-	}
-	return (dst);
+	str = (char*)s + ft_strlen(s) + 1;
+	while (--str > s - 1)
+		if (*str == (char)c)
+			return (str);
+	return (NULL);
 }

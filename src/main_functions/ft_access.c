@@ -6,13 +6,13 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 05:10:37 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 09:58:35 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/07 06:08:04 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void		ft_access(char **command, int i)
+void		ft_access(char **command)
 {
 	char *cmd1;
 	char *cmd2;
@@ -23,9 +23,9 @@ void		ft_access(char **command, int i)
 	err = ft_strjoin(command[0], " was not found in /bin/ or /usr/bin/");
 
 	if (access(cmd1, F_OK) == 0)
-		ft_execve(command, i, cmd1);
+		ft_execve(command, cmd1);
 	else if (access(cmd2, F_OK) == 0)
-		ft_execve(command, i, cmd2);
+		ft_execve(command, cmd2);
 	else
 		printf("%s\n", err);
 }

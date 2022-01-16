@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   mini_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 14:54:55 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/13 18:06:20 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
+
+static void	start_struct()
+{
+	t_mini_shell *ms;
+
+	ms = get_ms();
+	ms->s_count = 0;
+	ms->c_count = 0;
+	ms->contact = malloc(30 * sizeof(char *));
+}
 
 t_mini_shell *get_ms()
 {
@@ -25,28 +35,28 @@ t_mini_shell *get_ms()
 
 int	select_cmd(char **command)
 {
-	int i;
-
 	if (ft_strcmp(command[0], "exit") == 0)
+	{
+		printf("exit\n");
 		exit(0);
+	}
 	if (ft_strcmp(command[0], "cd") == 0)
 	{
 		chdir(command[1]);
 		return (0);
 	}
-	i = find_arrow(command);
 	if (ft_strcmp(command[0], "pwd") == 0)
-		ft_pwd(command, i);
+		ft_pwd(command);
 	else if (ft_strcmp(command[0], "echo") == 0)
-		ft_echo(command, i);
+		ft_echo(command);
 	else if (ft_strcmp(command[0], "export") == 0)
-		ft_export(command, i);
+		ft_export(command);
 	else if (ft_strcmp(command[0], "unset") == 0)
-		ft_unset(command, i);
+		ft_unset(command);
 	else if (ft_strcmp(command[0], "env") == 0)
-		ft_env(command, i);
+		ft_env(command);
 	else
-		ft_access(command, i);
+		ft_access(command);
 	return (0);
 }
 
@@ -88,12 +98,14 @@ int main(void)
 	signal(2, sig_handler);
     while(1)
     {
+		start_struct();
         line = get_line();
         if (line[0] != '\0')
 		{
 			command = ft_split(line, ' ');
-            if (select_cmd(command))
-				printf("%s not found\n", command[0]);
+			parse(line);
+            // if (select_cmd(command))
+			// 	printf("%s not found\n", command[0]);
 		}
     }
 	free(line);

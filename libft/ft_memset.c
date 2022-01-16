@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 20:19:39 by egomes            #+#    #+#             */
-/*   Updated: 2021/12/22 20:00:41 by egomes           ###   ########.fr       */
+/*   Created: 2021/02/10 22:49:34 by acanterg          #+#    #+#             */
+/*   Updated: 2021/02/17 14:51:33 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_shell.h"
+#include "libft.h"
 
-int		ft_strcmp(char *s1, char *s2)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int i;
+	size_t			i;
+	unsigned char	holder;
+	char			*p;
 
+	holder = c;
 	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
+	p = s;
+	while (i < n)
+		p[i++] = holder;
+	return (s);
 }

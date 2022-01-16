@@ -39,6 +39,7 @@ char *myttyname(int fd)
 			return NULL;
 		return path;
 	}
+	return NULL;
 }
 
 int		main(void)

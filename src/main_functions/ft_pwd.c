@@ -6,15 +6,15 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:29:33 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 09:58:19 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/06 19:25:35 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_pwd(char **command, int i)
+int	ft_pwd(char **command)
 {
-	if (ft_execve(command, i, "/bin/pwd"))
+	if (ft_execve(command, "/bin/pwd"))
 		return (1);
 	return (0);
 }
