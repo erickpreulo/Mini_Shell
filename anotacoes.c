@@ -93,3 +93,9 @@ typedef enum
   FILE_OUT
   FILE_APPEND
 } types_block;
+
+
+fd = open(erick1, W_OL)
+close(fd)
+
+fd[2]

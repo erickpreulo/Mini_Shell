@@ -27,7 +27,6 @@ void	parse(char *line)
 	int j;
 	int start;
 	int count;
-	int size;
 	char *str[50];
 	t_mini_shell *ms;
 

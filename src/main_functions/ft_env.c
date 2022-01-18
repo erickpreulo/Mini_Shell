@@ -14,7 +14,8 @@
 
 int	ft_env(char **command)
 {
-	if (ft_execve(command, "/usr/bin/env"))
-		return (1);
+	(void) command;
+	// if (ft_execve(command, "/usr/bin/env"))
+	// 	return (1);
 	return (0);
 }

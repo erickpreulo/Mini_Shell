@@ -14,13 +14,9 @@
 
 int	ft_exec_pipe(int i)
 {
-	t_mini_shell *ms;
-	ms = get_ms();
-
-	quando eu voltar quero ver funcionando
-	se não te tiro do grupo
-	mesmo que tu tenha resolvido o pior problema do codigo kkkkk
-	bj
+	(void)i;
+	// t_mini_shell *ms;
+	// ms = get_ms();
 
 	// size = 0;
 	// int fd[2];
@@ -62,4 +58,5 @@ int	ft_exec_pipe(int i)
 	// waitpid(pid1, NULL, 0);
 	// waitpid(pid2, NULL, 0);
 	// return (i);
+	return (0);
 }

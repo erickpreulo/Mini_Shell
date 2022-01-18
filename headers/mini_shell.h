@@ -18,12 +18,15 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <signal.h>
+
+
 
 # include "../libft/libft.h"
 
@@ -93,7 +96,7 @@ void	ft_access(char **command);
 
 
 int	find_outfile(char **argv);
-int	ft_execve(int i);
+int	ft_execve(int i, int fd[2]);
 t_mini_shell *get_ms();
 void parse(char *line);
 int	take_block(char *str, int i);

@@ -14,7 +14,8 @@
 
 int	ft_pwd(char **command)
 {
-	if (ft_execve(command, "/bin/pwd"))
-		return (1);
+	(void) command;
+	// if (ft_execve(command, "/bin/pwd"))
+	// 	return (1);
 	return (0);
 }

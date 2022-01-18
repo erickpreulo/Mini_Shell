@@ -14,7 +14,8 @@
 
 int	ft_echo(char **command)
 {
-	if (ft_execve(command, "/bin/echo"))
-		return (1);
+	(void) command;
+	// if (ft_execve(command, "/bin/echo"))
+	// 	return (1);
 	return (0);
 }

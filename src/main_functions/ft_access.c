@@ -14,18 +14,19 @@
 
 void		ft_access(char **command)
 {
-	char *cmd1;
-	char *cmd2;
-	char *err;
+	(void) command;
+	// char *cmd1;
+	// char *cmd2;
+	// char *err;
 
-	cmd1 = ft_strjoin("/bin/", command[0]);
-	cmd2 = ft_strjoin("usr/bin/", command[0]);
-	err = ft_strjoin(command[0], " was not found in /bin/ or /usr/bin/");
+	// cmd1 = ft_strjoin("/bin/", command[0]);
+	// cmd2 = ft_strjoin("usr/bin/", command[0]);
+	// err = ft_strjoin(command[0], " was not found in /bin/ or /usr/bin/");
 
-	if (access(cmd1, F_OK) == 0)
-		ft_execve(command, cmd1);
-	else if (access(cmd2, F_OK) == 0)
-		ft_execve(command, cmd2);
-	else
-		printf("%s\n", err);
+	// if (access(cmd1, F_OK) == 0)
+	// 	ft_execve(command, cmd1);
+	// else if (access(cmd2, F_OK) == 0)
+	// 	ft_execve(command, cmd2);
+	// else
+	// 	printf("%s\n", err);
 }

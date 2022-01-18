@@ -16,12 +16,15 @@ int		ft_executor()
 {
 	int i;
 	t_mini_shell *ms;
-
+	int fd[2];
 	i = 0;
 	ms = get_ms();
-	while (i < ms->size)
+	
+	pipe(fd);
+	while (i <= ms->size)
 	{
-		ft_execve(i);
+		printf("exec %d\n", i);
+		ft_execve(i, fd);
 		// if (ms->blocks[i + 1].type == T_PIPE)
 		// 	ft_exec_pipe(i, size);
 		i++;

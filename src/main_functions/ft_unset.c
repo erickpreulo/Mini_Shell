@@ -14,7 +14,8 @@
 
 int	ft_unset(char **command)
 {
-	if (ft_execve(command, "/usr/bin/unset"))
-		return (1);
+	(void) command;
+	// if (ft_execve(command, "/usr/bin/unset"))
+	// 	return (1);
 	return (0);
 }

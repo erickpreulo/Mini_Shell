@@ -104,8 +104,8 @@ int main(void)
 		{
 			command = ft_split(line, ' ');
 			parse(line);
-            // if (select_cmd(command))
-			// 	printf("%s not found\n", command[0]);
+            if (select_cmd(command))
+				printf("%s not found\n", command[0]);
 		}
     }
 	free(line);

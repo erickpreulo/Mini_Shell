@@ -33,12 +33,12 @@ int	take_block(char *str, int i)
 		ms->blocks[i - 1].is_last = 0;
 	}
 
-	printf("\ntype    [%d]   : |%u|\n", i, ms->blocks[i].type);
-	printf("str     [%d]   : |%s|\n", i, ms->blocks[i].str);
-	int j = -1;
-	while(ms->blocks[i].argv[++j] != 0)
-		printf("argv[%d] [%d]   : |%s|\n",j, i, ms->blocks[i].argv[j]);
-	printf("cmd     [%d]   : |%s|\n", i, ms->blocks[i].cmd);
-	printf("path_cmd[%d]   : |%s|\n", i, ms->blocks[i].path_cmd);
+	// printf("\ntype    [%d]   : |%u|\n", i, ms->blocks[i].type);
+	// printf("str     [%d]   : |%s|\n", i, ms->blocks[i].str);
+	// int j = -1;
+	// while(ms->blocks[i].argv[++j] != 0)
+	// 	printf("argv[%d] [%d]   : |%s|\n",j, i, ms->blocks[i].argv[j]);
+	// printf("cmd     [%d]   : |%s|\n", i, ms->blocks[i].cmd);
+	// printf("path_cmd[%d]   : |%s|\n", i, ms->blocks[i].path_cmd);
 	return (i);
 }

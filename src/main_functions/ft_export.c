@@ -14,7 +14,8 @@
 
 int	ft_export(char **command)
 {
-	if (ft_execve(command, "/usr/bin/export"))
-		return (1);
+	(void) command;
+	// if (ft_execve(command, "/usr/bin/export"))
+	// 	return (1);
 	return (0);
 }
