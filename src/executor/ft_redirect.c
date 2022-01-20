@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_access.c                                        :+:      :+:    :+:   */
+/*   ft_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 05:10:37 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/07 06:08:04 by egomes           ###   ########.fr       */
+/*   Created: 2022/01/14 00:36:16 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/20 03:58:43 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void		ft_access(char **command)
+void	ft_redirect(int i)
 {
-	(void) command;
-	// char *cmd1;
-	// char *cmd2;
-	// char *err;
+	t_mini_shell *ms;
+	ms = get_ms();
 
-	// cmd1 = ft_strjoin("/bin/", command[0]);
-	// cmd2 = ft_strjoin("usr/bin/", command[0]);
-	// err = ft_strjoin(command[0], " was not found in /bin/ or /usr/bin/");
-
-	// if (access(cmd1, F_OK) == 0)
-	// 	ft_execve(command, cmd1);
-	// else if (access(cmd2, F_OK) == 0)
-	// 	ft_execve(command, cmd2);
-	// else
-	// 	printf("%s\n", err);
+	// PRIMEIRO
+	if (i == 0)
+	{
+		if(ms->fd_in)
+			dup2(ms->fd_in, STDIN_FILENO);
+	}
+	// ULTIMO
+	if(i == ms->size -1)
+	{
+		if(ms->fd_out)
+			dup2(ms->fd_out, STDOUT_FILENO);
+	}
 }

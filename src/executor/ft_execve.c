@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_executor.c                                      :+:      :+:    :+:   */
+/*   ft_execve.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 09:47:51 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/14 11:28:07 by egomes           ###   ########.fr       */
+/*   Created: 2022/01/03 12:22:49 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/20 15:53:18 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int		ft_executor()
+int	ft_execve(int i)
 {
-	int i;
 	t_mini_shell *ms;
-	int fd[2];
-	i = 0;
+
 	ms = get_ms();
-	
-	pipe(fd);
-	while (i <= ms->size)
+	if (ms->blocks[i].type == T_FILE_APPEND || ms->blocks[i].type == T_FILE_OUT
+		|| ms->blocks[i].type == T_FILE_IN)
+		return (0);
+
+	ms->pid[i] = fork();
+	if (ms->pid[i] == 0)
 	{
-		printf("exec %d\n", i);
-		ft_execve(i, fd);
-		// if (ms->blocks[i + 1].type == T_PIPE)
-		// 	ft_exec_pipe(i, size);
-		i++;
+		ft_pipe(i);
+		ft_redirect(i);
+		if (execve(ms->blocks[i].path_cmd, ms->blocks[i].argv, NULL) == 0)
+			return (1);
 	}
+	if (i > 0 && i < ms->size -1)
+		ms->current_pipe += 1;
 	return (0);
 }

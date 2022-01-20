@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:17 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/14 11:30:01 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/20 12:21:10 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,10 @@ void	parse(char *line)
 	int i;
 	int j;
 	int start;
-	int count;
-	char *str[50];
+	char *str;
 	t_mini_shell *ms;
 
 	ms = get_ms();
-	i = -1;
-	count = 0;
-	while (line[++i] != 0)
-		if (have_separator(line[i], line[i - 1], line[i + 1]))
-			count++;
-	//str = malloc((count) * sizeof(char));
 	i = -1;
 	j = 0;
 	start = 0;
@@ -44,14 +37,15 @@ void	parse(char *line)
 	{
 		if (have_separator(line[i], line[i - 1], line[i + 1]))
 		{
-			str[j] = ft_substr(line, start, i - start);
+			str = ft_substr(line, start, i - start);
+			create_block(str);
+			//free(str);
 			start = i;
 			j++;
 		}
 	}
-	str[j] = ft_substr(line, start, i);
-	i = -1;
-	while (++i <= j)
-		ms->size = take_block(str[i], i);
+	str = ft_substr(line, start, i);
+	create_block(str);
+	//free(str);
 	ft_executor();
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/13 18:06:20 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:02:32 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	start_struct()
 	t_mini_shell *ms;
 
 	ms = get_ms();
-	ms->s_count = 0;
-	ms->c_count = 0;
+	ms->size = 0;
+	ms->current_pipe = 0;
 	ms->contact = malloc(30 * sizeof(char *));
 }
 
@@ -56,7 +56,7 @@ int	select_cmd(char **command)
 	else if (ft_strcmp(command[0], "env") == 0)
 		ft_env(command);
 	else
-		ft_access(command);
+		return (0);//ft_access(command);
 	return (0);
 }
 

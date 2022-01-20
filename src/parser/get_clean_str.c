@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_clean_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 10:49:04 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/15 17:34:42 by egomes           ###   ########.fr       */
+/*   Created: 2022/01/13 17:18:57 by acanterg          #+#    #+#             */
+/*   Updated: 2022/01/19 13:32:59 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/wait.h>
+#include "mini_shell.h"
 
-#include <unistd.h>
-
-int	main(void)
+char *get_clean_str(char *str)
 {
-	char c[2] = {'5', 48};
-	int i = 0;
+	int len;
 
-	write(1, c, 2);
+	
+	while (*str == '|' || *str == '>' || *str == '<' || *str == ' ')
+		str++;
+	len = ft_strlen(str) - 1;
+	while (str[len] == ' ')
+	{
+		str[len] = '\0';
+		len--;
+	}
+	return (str);
 }

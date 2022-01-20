@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/14 11:28:13 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/20 16:07:22 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <signal.h>
+#include <stdbool.h>
 
 
 
@@ -51,14 +52,15 @@ typedef enum
 
 typedef struct s_block
 {
-    char *path_cmd; // /bin/cat
-    char *cmd;      // /cat
-    char **argv;     // ['cat', 'file1.txt']
+    char *path_cmd;
+    char *cmd;
+    char **argv;
     type_sep type;
-    char *str; // "cat file1.txt"
-    int fd;          // 0
+    char *str;
+    int fd;
     int is_first;
     int is_last;
+    int group;
 }               t_block;
 
 typedef struct s_mini_shell
@@ -66,17 +68,17 @@ typedef struct s_mini_shell
     char separation[20][3];
     char str[20][2000];
     char **contact;
-    int s_count;
-    int c_count;
-
-
+   
     t_block blocks[50];
+    int group;
     int size;
-    int fd_in;
-    int fd_out;
-    int last_cmd;
-    int fd_pipes[50][2];
+    int fd_in[50];
+    int fd_out[50];
+    int is_pipe;
+    int fd[50][2];
+    int pid[50];
     int current_pipe;
+    int i;
 
 }               t_mini_shell;
 
@@ -90,16 +92,14 @@ int	ft_env(char **command);
 int	ft_export(char **command);
 int	ft_pwd(char **command);
 int	ft_unset(char **command);
-void	ft_access(char **command);
 
 // ****    other_functions   ****
 
-
 int	find_outfile(char **argv);
-int	ft_execve(int i, int fd[2]);
+int	ft_execve(int i);
 t_mini_shell *get_ms();
 void parse(char *line);
-int	take_block(char *str, int i);
+void	create_block(char *str);
 
 char **get_argv(char *str);
 char *get_clean_str(char *str);
@@ -108,8 +108,16 @@ int open_file_append(char *file_name);
 int open_file_input(char *file_name);
 char *get_path_cmd (char *cmd);
 type_sep get_type(char *str);
+bool is_file(type_sep type);
 
 int	ft_exec_pipe(int i);
 int		ft_executor();
+void	print_block(int i);
+int	ft_exec_pipe(int i);
+void	ft_pipe(int i);
+int open_file_output(char *file_name);
+int open_file_append(char *file_name);
+int open_file_input(char *file_name);
+void	ft_redirect(int i);
 
 #endif

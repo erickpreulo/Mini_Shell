@@ -1,0 +1,11 @@
+anotacoes.c
+main.c
+mini_shell.c
+src
+ 0      0        0        0       0   |   1        1   |   2        2        2   | 3
+"ls | grep a | grep b > file1 < file2 | grep a < file3 | grep b | grep c > file4 | ls"
+1_0              2_0                    12_1               1_2      2_2             1_3
+fd_in[50]
+
+fd_in[0] = file1
+fd_in[1] = file3
