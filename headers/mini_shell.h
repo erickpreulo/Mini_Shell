@@ -43,7 +43,7 @@
 
 typedef enum
 {
-    T_CMD,
+    T_FIRST,
     T_PIPE,
     T_FILE_IN,
     T_FILE_OUT,
@@ -58,9 +58,9 @@ typedef struct s_block
     type_sep type;
     char *str;
     int fd;
-    int is_first;
-    int is_last;
     int group;
+    bool first_of_group;
+    bool last_of_group;
 }               t_block;
 
 typedef struct s_mini_shell
@@ -70,7 +70,7 @@ typedef struct s_mini_shell
     char **contact;
    
     t_block blocks[50];
-    int group;
+    int group_size;
     int size;
     int fd_in[50];
     int fd_out[50];
@@ -112,7 +112,7 @@ bool is_file(type_sep type);
 
 int	ft_exec_pipe(int i);
 int		ft_executor();
-void	print_block(int i);
+void	print_blocks();
 int	ft_exec_pipe(int i);
 void	ft_pipe(int i);
 int open_file_output(char *file_name);

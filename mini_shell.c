@@ -18,6 +18,7 @@ static void	start_struct()
 
 	ms = get_ms();
 	ms->size = 0;
+	ms->group_size = 0;
 	ms->current_pipe = 0;
 	ms->contact = malloc(30 * sizeof(char *));
 }

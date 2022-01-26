@@ -27,9 +27,7 @@ void	parse(char *line)
 	int j;
 	int start;
 	char *str;
-	t_mini_shell *ms;
 
-	ms = get_ms();
 	i = -1;
 	j = 0;
 	start = 0;
@@ -46,6 +44,7 @@ void	parse(char *line)
 	}
 	str = ft_substr(line, start, i);
 	create_block(str);
+	//print_blocks();
 	//free(str);
 	ft_executor();
 }

@@ -17,8 +17,7 @@ int	ft_execve(int i)
 	t_mini_shell *ms;
 
 	ms = get_ms();
-	if (ms->blocks[i].type == T_FILE_APPEND || ms->blocks[i].type == T_FILE_OUT
-		|| ms->blocks[i].type == T_FILE_IN)
+	if (is_file(ms->blocks[i].type))
 		return (0);
 
 	ms->pid[i] = fork();

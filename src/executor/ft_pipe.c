@@ -17,24 +17,30 @@ void	ft_pipe(int i)
 	t_mini_shell *ms;
 	ms = get_ms();
 
-	// PRIMEIRO
-	if (i == 0 && i != ms->size - 1)
+	// PRIMEIRO DO GRUPO
+	if (ms->blocks[i].first_of_group && !ms->blocks[i].last_of_group)
 	{
-		dup2(ms->fd[ms->current_pipe][1], STDOUT_FILENO);
+		if (i == 0)
+			dup2(ms->fd[ms->current_pipe][1], STDOUT_FILENO);
+		else
+		{
+			dup2(ms->fd[ms->current_pipe][0], STDIN_FILENO);
+			dup2(ms->fd[ms->current_pipe + 1][1], STDOUT_FILENO);
+		}
 	}
-	// ULTIMO
-	else if(i > 0 && i == ms->size -1)
+	// ULTIMO DO GRUPO
+	else if(ms->blocks[i].last_of_group && !ms->blocks[i].first_of_group)
 	{
 		dup2(ms->fd[ms->current_pipe][0], STDIN_FILENO);
 	}
-	// DO MEIO
-	else if (i > 0 && i < ms->size -1)
+	// MEIO DO GRUPO
+	else if (!ms->blocks[i].first_of_group && !ms->blocks[i].last_of_group)
 	{
 		dup2(ms->fd[ms->current_pipe][0], STDIN_FILENO);
 		dup2(ms->fd[ms->current_pipe + 1][1], STDOUT_FILENO);
 	}
 	int j = 0;
-	while (j < 50)
+	while (j < ms->size)
 	{
 		close(ms->fd[j][0]);
 		close(ms->fd[j][1]);
@@ -42,9 +48,3 @@ void	ft_pipe(int i)
 	}
 
 }
-
-
-// fd[1][0]  ---> grep b --->  fd[2][1]
-// fd[2][0]  ---> grep b --->  fd[3][1]
-// fd[3][0]  ---> grep b --->  fd[4][1]
-// fd[4][0]  ---> grep c --->   1 || file.txt

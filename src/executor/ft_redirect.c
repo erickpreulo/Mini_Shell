@@ -18,15 +18,11 @@ void	ft_redirect(int i)
 	ms = get_ms();
 
 	// PRIMEIRO
-	if (i == 0)
-	{
-		if(ms->fd_in)
-			dup2(ms->fd_in, STDIN_FILENO);
-	}
+	if (ms->blocks[i].first_of_group && ms->fd_in[ms->blocks[i].group])
+			dup2(ms->fd_in[ms->blocks[i].group], STDIN_FILENO);
+	
 	// ULTIMO
-	if(i == ms->size -1)
-	{
-		if(ms->fd_out)
-			dup2(ms->fd_out, STDOUT_FILENO);
-	}
+	if(ms->blocks[i].last_of_group && ms->fd_out[ms->blocks[i].group])
+		dup2(ms->fd_out[ms->blocks[i].group], STDOUT_FILENO);
+
 }

@@ -22,7 +22,7 @@ type_sep get_type(char *str)
 		return (T_FILE_OUT);
 	if (str[0] == '>' && str[1] == '>' && str[2] == ' ')
 		return (T_FILE_APPEND);
-	return (T_CMD);
+	return (T_FIRST);
 }
 
 bool is_file(type_sep type)

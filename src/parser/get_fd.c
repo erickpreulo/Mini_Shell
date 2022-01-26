@@ -16,7 +16,6 @@ int open_file_output(char *file_name)
 {
 	int fd;
 
-	printf("entrou output\n");
 	fd = open(file_name, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (fd == -1)
 		printf("error on trying to open file output: %s\n", file_name);
@@ -27,7 +26,6 @@ int open_file_append(char *file_name)
 {
 	int fd;
 
-	printf("entrou append\n");
 	fd = open(file_name, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd == -1)
 		printf("error on trying to open file append: %s\n", file_name);
@@ -38,7 +36,6 @@ int open_file_input(char *file_name)
 {
 	int fd;
 
-	printf("entrou input\n");
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		printf("error on trying to open file input: %s\n", file_name);
