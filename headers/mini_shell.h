@@ -79,6 +79,7 @@ typedef struct s_mini_shell
     int pid[50];
     int current_pipe;
     int i;
+    char** env;
 
 }               t_mini_shell;
 

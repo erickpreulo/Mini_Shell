@@ -12,13 +12,14 @@
 
 #include "mini_shell.h"
 
-static void	start_struct()
+static void	start_struct(char **env)
 {
 	t_mini_shell *ms;
 
 	ms = get_ms();
 	ms->size = 0;
 	ms->group_size = 0;
+	ms->env = env;
 	ms->current_pipe = 0;
 	ms->contact = malloc(30 * sizeof(char *));
 }
@@ -91,15 +92,18 @@ void    sig_handler(int signum)
         rl_redisplay();
 }
 
-int main(void)
+int main(int argc, char** argv, char **env)
 {
 	char *line;
 	char **command;
 
+	(void) argc;
+	(void) argv;
+
 	signal(2, sig_handler);
     while(1)
     {
-		start_struct();
+		start_struct(env);
         line = get_line();
         if (line[0] != '\0')
 		{

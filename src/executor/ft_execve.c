@@ -25,7 +25,7 @@ int	ft_execve(int i)
 	{
 		ft_pipe(i);
 		ft_redirect(i);
-		if (execve(ms->blocks[i].path_cmd, ms->blocks[i].argv, NULL) == 0)
+		if (execve(ms->blocks[i].path_cmd, ms->blocks[i].argv, ms->env) == 0)
 			return (1);
 	}
 	if (i > 0 && i < ms->size -1)
