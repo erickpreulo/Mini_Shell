@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 15:47:10 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 16:25:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	start_struct(char **env)
 			ms->env[i] = ft_strdup(env[i]);
 		else
 			ms->env[i] = 0;
+		i++;
 	}
 }
 
