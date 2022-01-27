@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 16:25:24 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 16:30:30 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ static void	start_struct(char **env)
 	int i;
 
 	ms = get_ms();
+	ms->env = malloc(sizeof(char *) * 200);
 	i = 0;
 	while(i < 200)
+		ms->env[i++] = 0;
+	i = 0;
+	while (env[i])
 	{
-		if (env[i])
-			ms->env[i] = ft_strdup(env[i]);
-		else
-			ms->env[i] = 0;
+		ms->env[i] = ft_strdup(env[i]);
 		i++;
 	}
 }

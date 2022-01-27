@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 15:50:29 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 16:28:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_mini_shell
     int fd[50][2];
     int pid[50];
     int current_pipe;
-    char *env[200];
+    char **env;
     char **contact;
 
 }               t_mini_shell;
