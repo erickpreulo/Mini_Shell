@@ -6,16 +6,15 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:28 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 14:08:17 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_export(char **command)
+int	ft_export(int i)
 {
-	(void) command;
-	// if (ft_execve(command, "/usr/bin/export"))
-	// 	return (1);
+	(void) i;
+	printf("export not implemented yet, piece of shit\n");
 	return (0);
 }

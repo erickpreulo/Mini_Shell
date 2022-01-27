@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:22:49 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/20 15:53:18 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 13:55:07 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	ft_execve(int i)
 	t_mini_shell *ms;
 
 	ms = get_ms();
-	if (is_file(ms->blocks[i].type))
-		return (0);
 
 	ms->pid[i] = fork();
 	if (ms->pid[i] == 0)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/20 16:07:22 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 15:50:29 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #include <readline/history.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <dirent.h>
 
 
 
@@ -64,11 +65,7 @@ typedef struct s_block
 }               t_block;
 
 typedef struct s_mini_shell
-{
-    char separation[20][3];
-    char str[20][2000];
-    char **contact;
-   
+{  
     t_block blocks[50];
     int group_size;
     int size;
@@ -78,8 +75,8 @@ typedef struct s_mini_shell
     int fd[50][2];
     int pid[50];
     int current_pipe;
-    int i;
-    char** env;
+    char *env[200];
+    char **contact;
 
 }               t_mini_shell;
 
@@ -88,11 +85,13 @@ typedef struct s_mini_shell
 
 // ****    main_functions   ****
 
-int	ft_echo(char **command);
-int	ft_env(char **command);
-int	ft_export(char **command);
-int	ft_pwd(char **command);
-int	ft_unset(char **command);
+int	ft_echo(int i);
+int	ft_env();
+int	ft_export(int i);
+int	ft_pwd();
+int	ft_unset(int i);
+int	ft_exit();
+int ft_cd(int i);
 
 // ****    other_functions   ****
 
@@ -120,5 +119,9 @@ int open_file_output(char *file_name);
 int open_file_append(char *file_name);
 int open_file_input(char *file_name);
 void	ft_redirect(int i);
+int	select_cmd(int i);
+char *get_current_dir(void);
+void    update_env(char *key, char *newstr);
+void free_stuff();
 
 #endif

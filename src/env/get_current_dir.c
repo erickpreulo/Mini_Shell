@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_redirect.c                                      :+:      :+:    :+:   */
+/*   get_current_dir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 00:36:16 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 11:32:18 by egomes           ###   ########.fr       */
+/*   Created: 2022/01/27 15:12:40 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/27 15:15:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void	ft_redirect(int i)
+char *get_current_dir(void)
 {
-	t_mini_shell *ms;
-	ms = get_ms();
+    char *directory;
 
-	// PRIMEIRO
-	if (ms->blocks[i].first_of_group && ms->fd_in[ms->blocks[i].group])
-			dup2(ms->fd_in[ms->blocks[i].group], STDIN_FILENO);
-	
-	// ULTIMO
-	if(ms->blocks[i].last_of_group && ms->fd_out[ms->blocks[i].group])
-		dup2(ms->fd_out[ms->blocks[i].group], STDOUT_FILENO);
-
+    directory = malloc(sizeof(char) * 256);
+	getcwd(directory, 256);
+    return (directory);
 }

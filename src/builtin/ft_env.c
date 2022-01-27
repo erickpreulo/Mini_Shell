@@ -6,16 +6,20 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:25:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:14 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 14:15:27 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_env(char **command)
+int	ft_env()
 {
-	(void) command;
-	// if (ft_execve(command, "/usr/bin/env"))
-	// 	return (1);
+	t_mini_shell *ms;
+	char **env;
+
+	ms = get_ms();
+	env = ms->env;
+	while(*env)
+		printf("%s\n", *(env++));
 	return (0);
 }

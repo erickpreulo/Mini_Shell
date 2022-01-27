@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:53:57 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/18 18:23:30 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:22:01 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,4 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+

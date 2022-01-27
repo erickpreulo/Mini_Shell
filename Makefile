@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 11:37:32 by egomes            #+#    #+#              #
-#    Updated: 2022/01/13 18:10:19 by egomes           ###   ########.fr        #
+#    Updated: 2022/01/27 14:58:20 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,30 @@ AR = 		ar rcs
 LIBFT = 	libft
 LIBS	=	-L./$(LIBFT) -g -lft -lreadline -I .brew/opt/readline/include
 
-$(NAME):	
-			@$(CC) $(CFLAGS) $(INCLUD) $(SRC) $(LIBS) -o $(NAME)
+del:		re
+			./mini_shell
 
 all:		$(NAME)
+
+$(NAME):	lib
+			@echo "mini_shell..."
+			@$(CC) $(CFLAGS) $(INCLUD) $(SRC) $(LIBS) -o $(NAME)
+			@rm -rf *.dSYM
+			@echo ">>> mini_shell done!"
+
+
+lib:	
+		@echo "libft..."
+		@make re -C $(LIBFT)
+		@make clean -C $(LIBFT)
+		@echo ">>> libft done!"
 
 clean:
 		${shell find . -type f -name "*.o" -delete}
 
 fclean: clean
-	@rm -f $(NAME)
+		@make fclean -C $(LIBFT)
+		@rm -f $(NAME)
 
-re: fclean all
+re: 	fclean all
+

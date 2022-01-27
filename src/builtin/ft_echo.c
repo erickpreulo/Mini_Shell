@@ -6,16 +6,20 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:28:50 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:01 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 14:06:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_echo(char **command)
+int	ft_echo(int i)
 {
-	(void) command;
-	// if (ft_execve(command, "/bin/echo"))
-	// 	return (1);
+	t_mini_shell *ms;
+	char *str;
+
+	ms = get_ms();
+	str = ms->blocks[i].str + 5;
+	printf("%s\n", str);
+	
 	return (0);
 }

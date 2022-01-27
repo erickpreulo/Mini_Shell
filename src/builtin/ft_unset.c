@@ -6,16 +6,15 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:30:12 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:43 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 14:08:09 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_unset(char **command)
+int	ft_unset(int i)
 {
-	(void) command;
-	// if (ft_execve(command, "/usr/bin/unset"))
-	// 	return (1);
+	(void) i;
+	printf("unset not implemented yet, noob\n");
 	return (0);
 }

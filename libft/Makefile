@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:55:33 by acanterg          #+#    #+#              #
-#    Updated: 2022/01/13 18:00:06 by egomes           ###   ########.fr        #
+#    Updated: 2022/01/27 12:20:30 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,26 +66,26 @@ CFLAGS	= -Wall -Wextra -Werror
 NAME	= libft.a
 
 .c.o:
-			${GCC} ${CFLAGS} -c $< -o ${<:.c=.o}
+			@${GCC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 all : 		${NAME}
 
 $(NAME) :	${OBJS} ${OBJS_2}
-			ar rc ${NAME} ${OBJS} ${OBJS_2}
-			ranlib ${NAME}
+			@ar rc ${NAME} ${OBJS} ${OBJS_2}
+			@ranlib ${NAME}
 
 bonus :		${NAME} ${OBJS_B}
 			ar rc ${NAME} ${OBJS_B}
 			ranlib ${NAME}
 
 clean :
-			rm -f ${OBJS} ${OBJS_2} ${OBJS_B}
+			@rm -f ${OBJS} ${OBJS_2} ${OBJS_B}
 
 teste:		
 			${GCC} ${CFLAGS} -fsanitize=address -g ft_split.c ft_substr.c ft_strlcpy.c ft_strlen.c && ./a.out
 
 fclean :	clean
-			rm -f ${NAME}
+			@rm -f ${NAME}
 
 re :		fclean all
 

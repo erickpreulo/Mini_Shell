@@ -6,16 +6,18 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:29:33 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/06 19:25:35 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/27 15:16:35 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_pwd(char **command)
+int	ft_pwd()
 {
-	(void) command;
-	// if (ft_execve(command, "/bin/pwd"))
-	// 	return (1);
+	char *dir;
+
+	dir = get_current_dir();
+	printf("%s\n", dir);
+	free(dir);
 	return (0);
 }
