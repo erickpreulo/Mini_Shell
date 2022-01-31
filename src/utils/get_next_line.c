@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execve.c                                        :+:      :+:    :+:   */
+/*   get_next_line .c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 12:22:49 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 17:01:03 by egomes           ###   ########.fr       */
+/*   Created: 2021/09/16 17:39:00 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/31 01:34:37 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_execve(int i)
+int		get_next_line(char **line)
 {
-	t_mini_shell *ms;
+	int i;
+	int r;
+	char *buffer;
+	char c;
 
-	ms = get_ms();
-
-	ms->pid[i] = fork();
-	if (ms->pid[i] == 0)
+	if (!(buffer = (char *)malloc(100000)))
+		return (-1);
+	i = 0;
+    while (i < 100000)
+        buffer[i++] = '\0';
+    i = 0;
+	while ((r = read(0, &c, 1)) && c != '\n' && c != '\0')
 	{
-		// ft_pipe_old(i);
-		// ft_redirect_old(i);
-		dup2(ms->fd_enter, STDIN_FILENO);
-		dup2(ms->fd_exit, STDOUT_FILENO);
-		int j = 0;
-		while (j < ms->size)
-		{
-			close(ms->fd[j][0]);
-			close(ms->fd[j][1]);
-			j++;
-		}
-		if (execve(ms->blocks[i].path_cmd, ms->blocks[i].argv, ms->env) == 0)
-			return (1);
+        if (c == '\n' || c == '\0')
+            break;
+		if (c != '\n' && c != '\0')
+			buffer[i] = c;
+		i++;
 	}
-	return (0);
+	buffer[i] = '\0';
+	*line = buffer;
+	return (r);
 }

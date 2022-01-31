@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:06:47 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 14:12:03 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/31 17:01:08 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	select_cmd(int i)
 	t_mini_shell *ms;
 
 	ms = get_ms();
+	ft_redirect(i);
 	if (is_file(ms->blocks[i].type))
 		return (0);
 	if (ft_strcmp(ms->blocks[i].cmd, "exit") == 0)
@@ -37,5 +38,7 @@ int	select_cmd(int i)
 		ft_execve(i);
 	else
 		printf("%s not found, bitch!\n", ms->blocks[i].cmd);
+	if (i > 0 && i < ms->size -1)
+		ms->current_pipe += 1;
 	return (0);
 }

@@ -1,48 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_executor.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 09:47:51 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 16:34:14 by egomes           ###   ########.fr       */
+/*   Created: 2022/01/31 17:02:37 by egomes            #+#    #+#             */
+/*   Updated: 2022/01/31 18:28:04 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_shell.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int		ft_executor()
+struct node {
+	int data;
+	struct node *link;
+};
+
+int	main(int argc, char **argv, char **env)
 {
-	int i;
-	t_mini_shell *ms;
-	
-	ms = get_ms();
-	
-	i = 0;
-	while (i < 50)
-	{
-		pipe(ms->fd[i]);
-		i++;
-	}
-	i = 0;
-	while (i < ms->size)
-	{
-		select_cmd(i);
-		i++;
-	}
-	i = 0;
-	while (i <= ms->size)
-	{
-		close(ms->fd[i][0]);
-		close(ms->fd[i][1]);
-		i++;
-	}
-	i = 0;
-	while (i < ms->size)
-	{
-		waitpid(ms->pid[i], NULL, 0);
-		i++;
-	}
-	return (0);
+	(void)argc;
+	(void)argv;
+	struct node *head = NULL;
+	head = (struct node *)malloc(sizeof(struct node));
+	head->data = 45;
+	head->link = NULL;
+
+	printf("%d", head->data);
 }
