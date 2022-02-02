@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 09:47:51 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 16:34:14 by egomes           ###   ########.fr       */
+/*   Updated: 2022/01/31 23:46:42 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,18 @@ int		ft_executor()
 	
 	ms = get_ms();
 	
-	i = 0;
-	while (i < 50)
-	{
+	i = -1;
+	while (++i < 50)
 		pipe(ms->fd[i]);
-		i++;
-	}
-	i = 0;
-	while (i < ms->size)
-	{
+	i = -1;
+	while (++i < ms->size)
 		select_cmd(i);
-		i++;
-	}
-	i = 0;
-	while (i <= ms->size)
+	i = -1;
+	while (++i < ms->size)
 	{
 		close(ms->fd[i][0]);
 		close(ms->fd[i][1]);
-		i++;
-	}
-	i = 0;
-	while (i < ms->size)
-	{
 		waitpid(ms->pid[i], NULL, 0);
-		i++;
 	}
 	return (0);
 }

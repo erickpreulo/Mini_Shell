@@ -6,23 +6,25 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:25:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 17:01:19 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/01 20:21:52 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_env(int i)
+int	ft_env()
 {
 	t_mini_shell *ms;
-	char **env;
-	(void) i;
+	t_list *curr;
 	
 	ms = get_ms();
-	env = ms->env;
+	curr = *(ms->lst_env);
 
-	while(*env)
-		ft_putendl_fd(*(env++), ms->fd_exit);
+	while (curr)
+	{
+		ft_putendl_fd((char *)curr->content, ms->fd_exit);
+		curr = curr->next;
+	}
+
 	return (0);
 }
-

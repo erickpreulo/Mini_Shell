@@ -6,39 +6,11 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 01:39:50 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/01 20:13:38 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-
-static void	start_struct(char **env)
-{
-	t_mini_shell *ms;
-	int i;
-
-	ms = get_ms();
-	ms->env = malloc(sizeof(char *) * 200);
-	i = 0;
-	while(i < 200)
-		ms->env[i++] = 0;
-	i = 0;
-	while (env[i])
-	{
-		ms->env[i] = ft_strdup(env[i]);
-		i++;
-	}
-}
-
-static void	reset_struct()
-{
-	t_mini_shell *ms;
-
-	ms = get_ms();
-	ms->size = 0;
-	ms->group_size = 0;
-	ms->current_pipe = 0;
-}
 
 t_mini_shell *get_ms()
 {

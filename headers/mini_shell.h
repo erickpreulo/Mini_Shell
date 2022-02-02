@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 16:43:08 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/01 20:20:34 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_mini_shell
     int pid[50];
     int current_pipe;
     char **env;
+    t_list **lst_env;
     char **contact;
     int fd_exit;
     int fd_enter;
@@ -88,7 +89,7 @@ typedef struct s_mini_shell
 // ****    main_functions   ****
 
 int	ft_echo(int i);
-int	ft_env(int i);
+int	ft_env();
 int	ft_export(int i);
 int	ft_pwd();
 int	ft_unset(int i);
@@ -128,5 +129,9 @@ void free_stuff();
 int		get_next_line(char **line);
 void	ft_pipe_old(int i);
 void	ft_redirect_old(int i);
+void	start_struct(char **env);
+void	reset_struct();
+
+void get_env_list(char **env);
 
 #endif
