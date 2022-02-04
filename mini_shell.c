@@ -34,7 +34,7 @@ char    *get_line()
         free(line);
         line = NULL;
     }
-    line = readline("Cyber38@TM %> ");
+    line = readline("\033[0;32mCyber38@TM \033[0;31m%> \033[0m");
     if (!line) {
         printf("exit error line\n");
         exit(0);
