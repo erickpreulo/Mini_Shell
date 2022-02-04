@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/01 20:20:34 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/03 19:19:55 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ typedef enum
     T_FILE_OUT,
     T_FILE_APPEND
 } type_sep;
+
+typedef struct s_env
+{
+	char *key;
+	char *str;
+}               t_env;
 
 typedef struct s_block
 {
@@ -124,7 +130,6 @@ int open_file_input(char *file_name);
 void	ft_redirect(int i);
 int	select_cmd(int i);
 char *get_current_dir(void);
-void    update_env(char *key, char *newstr);
 void free_stuff();
 int		get_next_line(char **line);
 void	ft_pipe_old(int i);
@@ -133,5 +138,10 @@ void	start_struct(char **env);
 void	reset_struct();
 
 void get_env_list(char **env);
+t_env	*create_t_env(char *line);
+t_env    *get_env(char *key);
+int    update_or_create_env(char *str);
+char    *get_env_value(char *key);
+char *expand_env(char *str);
 
 #endif

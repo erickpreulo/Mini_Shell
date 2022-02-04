@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:17 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 12:41:48 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/03 18:50:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,60 @@ int		have_separator(char c, char bf, char aft)
 	return (0);
 }
 
+char	*take_off_quotes(char *line)
+{
+	int i;
+
+	i = -1;;
+	while (line[++i] != '\0')
+		line[i] = line[i + 1];
+	line[i - 2] = '\0';
+	return (line);
+}
+
 void	parse(char *line)
 {
 	int i;
 	int j;
 	int start;
 	char *str;
+	char aspas;
 
+	aspas = 0;
 	i = -1;
 	j = 0;
 	start = 0;
 	while (line[++i] != '\0')
-	{
+	{		
+		if (line[i] == '\'' || line[i] == '\"')
+		{
+			aspas = line[i];
+			i++;
+		}
+		while (aspas != 0 && line[i] != aspas && line[i] != '\0')
+			i++;
+		if (line[i] == '\0')
+			break;
+		if (aspas)
+		{
+			aspas = 0;
+			i++;
+		}
 		if (have_separator(line[i], line[i - 1], line[i + 1]))
 		{
 			str = ft_substr(line, start, i - start);
 			create_block(str);
-			//free(str);
 			start = i;
 			j++;
 		}
 	}
+	if (aspas)
+	{
+		printf("error on aspas, nigga\n");
+		return;
+	}
 	str = ft_substr(line, start, i);
 	create_block(str);
 	//print_blocks();
-	//free(str);
 	ft_executor();
 }

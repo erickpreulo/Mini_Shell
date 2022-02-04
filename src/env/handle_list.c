@@ -1,16 +1,17 @@
 #include "mini_shell.h"
 
-// typedef struct s_lisenv
-// {
-// 	char *line;
-// } t_lisenv;
+t_env	*create_t_env(char *line)
+{
+	t_env *env = malloc(sizeof(t_env));
+	char *find;
 
-// t_lstenv	*create_env(char *line)
-// {
-// 	t_lisenv *env = malloc(sizeof(t_lisenv));
-// 	env->line = line;
-// 	return(env);
-// }
+	env->str = ft_strdup(line);
+	env->key = ft_strdup(line);
+	find = ft_strchr(env->key, '=');
+	find[0] = '\0';
+
+	return (env);
+}
 
 void get_env_list(char **env)
 {
@@ -20,15 +21,12 @@ void get_env_list(char **env)
 
 	ms = get_ms();
 	ms->env = env;
-
 	lst = malloc(sizeof(t_list *));
-
 	i = 0;
 	while (env[i])
 	{
-		ft_lstadd_back(lst, ft_lstnew(env[i]));
+		ft_lstadd_back(lst, ft_lstnew(create_t_env(env[i])));
 		i++;
 	}
-
 	ms->lst_env = lst;
 }

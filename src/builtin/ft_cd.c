@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:56:13 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 15:26:48 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/03 00:13:29 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 char    *get_dir(int i)
 {
     t_mini_shell *ms;
-
     ms = get_ms();
     if (!ms->blocks[i].argv[1])
-        return (getenv("HOME"));
+        return (get_env_value("HOME"));
     else if (ft_strcmp(ms->blocks[i].argv[1], "-") == 0)
-        return (getenv("OLDPWD"));
+        return (get_env_value("OLDPWD"));
     else
         return (ms->blocks[i].argv[1]);
 }
@@ -46,14 +45,20 @@ int is_valid_dir(const char *dir)
 void    change_dir(char *dir)
 {
     char *str;
+    char *str_join;
 
     str = get_current_dir();
-    update_env("OLDPWD=", str);
+    str_join = ft_strjoin("OLDPWD=", str);
+    update_or_create_env(str_join);
     free(str);
+    free(str_join);
     chdir(dir);
     str = get_current_dir();
-    update_env("PWD=", str);
+    str_join = ft_strjoin("PWD=", str);
+    update_or_create_env(str_join);
     free(str);
+    free(str_join);
+
 }
 
 int ft_cd(int i)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:18:57 by acanterg          #+#    #+#             */
-/*   Updated: 2022/01/19 13:32:59 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/02 23:40:48 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char *get_clean_str(char *str)
 {
 	int len;
 
-	
 	while (*str == '|' || *str == '>' || *str == '<' || *str == ' ')
 		str++;
 	len = ft_strlen(str) - 1;

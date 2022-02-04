@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:25:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/01 20:21:52 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/02 17:53:13 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_env()
 
 	while (curr)
 	{
-		ft_putendl_fd((char *)curr->content, ms->fd_exit);
+		ft_putendl_fd(((t_env *)curr->content)->str, ms->fd_exit);
 		curr = curr->next;
 	}
 

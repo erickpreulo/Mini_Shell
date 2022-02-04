@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:54:07 by acanterg          #+#    #+#             */
-/*   Updated: 2022/01/20 16:12:01 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/02 22:44:59 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,23 +71,4 @@ void	create_block(char *str)
 	
 	// ++ PARA CONTAR OS BLOCOS
 	ms->size++;
-
-	// if (ms->blocks[i].type == T_FILE_IN
-	// 	|| ms->blocks[i].type == T_FILE_OUT
-	// 	|| ms->blocks[i].type == T_FILE_APPEND)
-	// 	ms->size--;
-
 }
-
-
-	// if (is_file(ms->blocks[i].type))
-	// 		ms->is_pipe = 1;
-	// if (ms->blocks[i].type == T_PIPE && ms->is_pipe)
-	// {
-	// 	printf("\nAQUIIII!!!!\n");
-	// 	ms->i++;
-	// 	ms->size = 0;
-	// 	i = ms->size;
-	// 	ms->is_pipe = 0;
-	// }
-	
