@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:01:08 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/07 23:09:01 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/08 00:54:15 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void	print_blocks(void)
 {
-	int i;
-	t_mini_shell *ms;
+	int				i;
+	t_mini_shell	*ms;
 
 	ms = get_ms();
-
 	i = 0;
 	while (i < ms->size)
 	{

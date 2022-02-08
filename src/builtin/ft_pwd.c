@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:29:33 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/07 23:16:48 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/08 00:25:45 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_pwd(void)
 {
-	char *dir;
+	char	*dir;
 
 	dir = get_current_dir();
 	printf("%s\n", dir);

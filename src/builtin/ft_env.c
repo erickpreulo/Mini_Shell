@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:25:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/07 23:16:24 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/08 00:25:25 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_env(void)
 {
-	t_mini_shell *ms;
-	t_list *curr;
-	
+	t_mini_shell	*ms;
+	t_list			*curr;
+
 	ms = get_ms();
 	curr = *(ms->lst_env);
 	while (curr)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:28:50 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/03 18:14:03 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/08 00:20:18 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_echo(int i)
 {
-	t_mini_shell *ms;
-	char **argv;
+	t_mini_shell	*ms;
+	char			**argv;
 
 	ms = get_ms();
 	argv = ms->blocks[i].argv + 1;
@@ -25,11 +25,10 @@ int	ft_echo(int i)
 	{
 		ft_putstr_fd(*argv, ms->fd_exit);
 		if (*(argv + 1))
-			ft_putchar_fd(' ', ms->fd_exit);	
+			ft_putchar_fd(' ', ms->fd_exit);
 		argv++;
 	}
 	if (ft_strcmp(ms->blocks[i].argv[1], "-n") != 0)
 		ft_putchar_fd('\n', ms->fd_exit);
-		
 	return (0);
 }

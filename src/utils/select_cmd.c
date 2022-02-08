@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:06:47 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/07 23:17:19 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/08 00:54:36 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	select_cmd(int i)
 {
-	t_mini_shell *ms;
+	t_mini_shell	*ms;
 
 	ms = get_ms();
 	ft_redirect(i);

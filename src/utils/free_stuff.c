@@ -6,20 +6,19 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:49:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/07 23:11:26 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/08 00:49:13 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void free_stuff(void)
+void	free_stuff(void)
 {
-    t_mini_shell *ms;
-    int i;
+	t_mini_shell	*ms;
+	int				i;
 
-    ms = get_ms();
-    i = 0;
-    while (ms->env[i])
-        free(ms->env[i++]);
-
+	ms = get_ms();
+	i = 0;
+	while (ms->env[i])
+		free(ms->env[i++]);
 }

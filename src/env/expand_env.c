@@ -6,70 +6,65 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:12:40 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 15:15:16 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/08 00:37:28 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "mini_shell.h"
 
-char *get_key(char *str, int *i)
+char	*get_key(char *str, int *i)
 {
-	char *key;
-	int start;
+	char	*key;
+	int		start;
 
 	start = *i;
-	while (str[*i] != ' ' && str[*i] != '\0')  
-        *i += 1;
-    key = ft_substr(str, start, *i - start);
+	while (str[*i] != ' ' && str[*i] != '\0')
+		*i += 1;
+	key = ft_substr(str, start, *i - start);
 	return (key);
 }
 
-char *get_str_before(char *str, int *i)
+char	*get_str_before(char *str, int *i)
 {
-	char *str_bfr;
+	char	*str_bfr;
 
-	while (str[*i] != '$')  
-        *i += 1;
-    str_bfr = ft_substr(str, 0, *i);
-    *i += 1;
+	while (str[*i] != '$')
+		*i += 1;
+	str_bfr = ft_substr(str, 0, *i);
+	*i += 1;
 	return (str_bfr);
 }
 
-char *join_all(char *str, char *bfr, char *env, char* aft)
+char	*join_all(char *str, char *bfr, char *env, char *aft)
 {
-	char *str_mid;
-	char *str_final;
-	
+	char	*str_mid;
+	char	*str_final;
+
 	str_mid = ft_strjoin(bfr, env);
 	str_final = ft_strjoin(str_mid, aft);
-
 	free(str);
 	free(bfr);
 	free(aft);
 	free(str_mid);
-
 	return (expand_env(str_final));
 }
 
-char *expand_env(char *str)
+char	*expand_env(char *str)
 {
-	int i;
-	char *str_bfr;
-	char *key;
-	char *str_env;
-	char *str_aft;
-	
-    if (ft_strchr(str, '$') == 0)
-        return (str);
+	int		i;
+	char	*str_bfr;
+	char	*key;
+	char	*str_env;
+	char	*str_aft;
 
+	if (ft_strchr(str, '$') == 0)
+		return (str);
 	i = 0;
 	str_bfr = get_str_before(str, &i);
 	key = get_key(str, &i);
 	str_env = get_env_value(key);
 	free(key);
 	str_aft = ft_substr(str, i, ft_strlen(str) - i);
-
 	if (str_env)
 		return (join_all(str, str_bfr, str_env, str_aft));
 	return (join_all(str, str_bfr, "", str_aft));
@@ -77,7 +72,7 @@ char *expand_env(char *str)
 
 // char *expand_env(char *str)
 // {   
-//     char *new_str;
+//	 char *new_str;
 //     char *new_str2;
 //     char *str1;
 //     char *str2;
@@ -85,10 +80,10 @@ char *expand_env(char *str)
 //     char *env_value;
 //     int start;
 //     int i;
-    
+
 //     if (ft_strchr(str, '$') == 0)
 //         return (str);
- 
+
 //     start = i;
 //     while (str[i] != ' ' && str[i] != '\0')
 //         i++;
