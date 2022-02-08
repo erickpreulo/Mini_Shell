@@ -6,17 +6,18 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 09:47:51 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 23:46:42 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 23:08:46 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int		ft_executor()
+int		ft_executor(void)
 {
 	int i;
 	t_mini_shell *ms;
-	
+	int status;
+
 	ms = get_ms();
 	
 	i = -1;
@@ -30,7 +31,8 @@ int		ft_executor()
 	{
 		close(ms->fd[i][0]);
 		close(ms->fd[i][1]);
-		waitpid(ms->pid[i], NULL, 0);
+		waitpid(ms->pid[i], &status, 0);
 	}
+	ms->final_status = status;
 	return (0);
 }

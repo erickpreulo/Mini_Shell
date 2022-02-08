@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:53:30 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/18 16:02:57 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:24:35 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	return ((char*)ft_memchr(s, c, ft_strlen(s) + 1));
+	return ((char *)ft_memchr(s, c, ft_strlen(s) + 1));
 }

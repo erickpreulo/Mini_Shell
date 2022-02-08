@@ -6,13 +6,13 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:49:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 15:51:05 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 23:11:26 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void free_stuff()
+void free_stuff(void)
 {
     t_mini_shell *ms;
     int i;

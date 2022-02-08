@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 12:21:08 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/17 18:30:34 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:49:57 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = 0;
 		start = 0;
 	}
-	if (!(result = malloc((len + 1) * sizeof(char))))
+	result = malloc((len + 1) * sizeof(char));
+	if (!(result))
 		return (NULL);
 	ft_strlcpy(result, s + start, len + 1);
 	return (result);

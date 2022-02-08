@@ -6,16 +6,16 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 12:18:02 by acanterg          #+#    #+#             */
-/*   Updated: 2022/01/13 18:01:49 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 22:49:20 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_count_words_split(char const *str, char c)
+static int	ft_count_words_split(char const *str, char c)
 {
 	int	counter;
-	int looking_words;
+	int	looking_words;
 
 	counter = 0;
 	looking_words = 1;
@@ -33,7 +33,7 @@ static int		ft_count_words_split(char const *str, char c)
 	return (counter);
 }
 
-static int		get_end_index(char const *str, char c)
+static int	get_end_index(char const *str, char c)
 {
 	int		len;
 
@@ -43,7 +43,7 @@ static int		get_end_index(char const *str, char c)
 	return (len);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**matrix;
 	int		count_words;
@@ -53,7 +53,8 @@ char			**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	count_words = ft_count_words_split(s, c) + 1;
-	if (!(matrix = malloc(sizeof(char *) * count_words)))
+	matrix = malloc(sizeof(char *) * count_words);
+	if (!(matrix))
 		return (NULL);
 	w = 0;
 	while (w < count_words - 1)

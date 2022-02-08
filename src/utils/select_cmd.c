@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:06:47 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 17:01:08 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 23:17:19 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	select_cmd(int i)
 	if (is_file(ms->blocks[i].type))
 		return (0);
 	if (ft_strcmp(ms->blocks[i].cmd, "exit") == 0)
-		ft_exit(i);
+		ft_exit();
 	else if (ft_strcmp(ms->blocks[i].cmd, "cd") == 0)
 		ft_cd(i);
 	else if (ft_strcmp(ms->blocks[i].cmd, "pwd") == 0)
-		ft_pwd(i);
+		ft_pwd();
 	else if (ft_strcmp(ms->blocks[i].cmd, "echo") == 0)
 		ft_echo(i);
 	else if (ft_strcmp(ms->blocks[i].cmd, "export") == 0)
@@ -33,11 +33,14 @@ int	select_cmd(int i)
 	else if (ft_strcmp(ms->blocks[i].cmd, "unset") == 0)
 		ft_unset(i);
 	else if (ft_strcmp(ms->blocks[i].cmd, "env") == 0)
-		ft_env(i);
+		ft_env();
 	else if (ms->blocks[i].path_cmd)
 		ft_execve(i);
 	else
+	{
 		printf("%s not found, bitch!\n", ms->blocks[i].cmd);
+		ms->final_status = 127;
+	}
 	if (i > 0 && i < ms->size -1)
 		ms->current_pipe += 1;
 	return (0);

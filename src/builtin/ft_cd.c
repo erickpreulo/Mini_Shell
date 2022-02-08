@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:56:13 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/03 00:13:29 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/04 17:32:15 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void    change_dir(char *dir)
     update_or_create_env(str_join);
     free(str);
     free(str_join);
-
 }
 
 int ft_cd(int i)
@@ -66,7 +65,7 @@ int ft_cd(int i)
     char *dir;
 
     int res_dir;
-	dir = get_dir(i);
+	dir = ft_strdup(get_dir(i));
     res_dir = is_valid_dir(dir);
     if (res_dir == 1)
         change_dir(dir);
@@ -74,5 +73,6 @@ int ft_cd(int i)
         printf("cd: not a directory: %s\n", dir);
     else
         printf("cd: no such file or directory: %s\n", dir);
+    free(dir);
 	return (0);
 }

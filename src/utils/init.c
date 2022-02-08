@@ -10,7 +10,7 @@ void	start_struct(char **env)
 
 }
 
-void	reset_struct()
+void	reset_struct(void)
 {
 	t_mini_shell *ms;
 

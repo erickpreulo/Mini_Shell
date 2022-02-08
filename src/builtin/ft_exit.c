@@ -6,13 +6,13 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 11:49:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 14:15:46 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 23:16:54 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_exit()
+int	ft_exit(void)
 {
 	printf("exit\n");
 	exit(0);

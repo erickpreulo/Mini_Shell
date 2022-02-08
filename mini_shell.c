@@ -6,13 +6,13 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/01 20:13:38 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 23:04:58 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-t_mini_shell *get_ms()
+t_mini_shell *get_ms(void)
 {
 	static t_mini_shell *ms;
 	

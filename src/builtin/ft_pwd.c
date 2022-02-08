@@ -6,13 +6,13 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:29:33 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/27 15:16:35 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 23:16:48 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	ft_pwd()
+int	ft_pwd(void)
 {
 	char *dir;
 

@@ -6,13 +6,13 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:53:57 by acanterg          #+#    #+#             */
-/*   Updated: 2022/01/27 11:22:01 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 22:50:12 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t			i;
 	unsigned char	*str1;
@@ -29,4 +29,3 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-

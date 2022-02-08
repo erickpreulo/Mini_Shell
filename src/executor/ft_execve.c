@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:22:49 by egomes            #+#    #+#             */
-/*   Updated: 2022/01/31 23:40:41 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/07 20:27:02 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_execve(int i)
 {
 	t_mini_shell *ms;
 	ms = get_ms();
-
+	
 	ms->pid[i] = fork();
 	if (ms->pid[i] == 0)
 	{
