@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/08 00:28:19 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:30:48 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,5 @@ int	ft_export(int i)
 		only_export();
 	else if (ft_strchr(ms->blocks[i].argv[1], '='))
 		update_or_create_env(ms->blocks[i].argv[1]);
-	return (0);
+	return (5);
 }

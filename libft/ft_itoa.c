@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:54:06 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/08 00:05:27 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:37:37 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	is_neg(int n)
 	int	isneg;
 
 	isneg = 0;
-	if (n > 0)
+	if (n < 0)
 		isneg = 1;
 	return (isneg);
 }

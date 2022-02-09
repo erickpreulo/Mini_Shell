@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:30:12 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/08 00:24:57 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:30:48 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ int	ft_unset(int i)
 		prev = curr;
 		curr = curr->next;
 	}
-	return (0);
+	return (6);
 }

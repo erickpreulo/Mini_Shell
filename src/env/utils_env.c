@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:23:22 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/08 00:34:11 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:36:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,19 @@ char	*get_env_value(char *key)
 {
 	t_env	*env;
 	char	*value;
+	t_mini_shell *ms;
 
+	ms = get_ms();
+
+	if (ft_strcmp(key, "?") == 0)
+	{
+		return (ft_itoa(ms->final_status));
+	}
 	env = get_env(key);
 	if (env)
 	{
 		value = ft_strchr(env->str, '=');
 		return (value + 1);
-	}
-	if (ft_strcmp(key, "?") == 0)
-	{
-		return (ft_itoa(get_ms()->final_status));
 	}
 	return (NULL);
 }

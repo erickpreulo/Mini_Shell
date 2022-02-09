@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:28:50 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/08 00:20:18 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:45:11 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int	ft_echo(int i)
 	}
 	if (ft_strcmp(ms->blocks[i].argv[1], "-n") != 0)
 		ft_putchar_fd('\n', ms->fd_exit);
-	return (0);
+	return (4);
 }

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:56:13 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/08 00:23:07 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:30:33 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,5 @@ int	ft_cd(int i)
 	else
 		printf("cd: no such file or directory: %s\n", dir);
 	free(dir);
-	return (0);
+	return (2);
 }

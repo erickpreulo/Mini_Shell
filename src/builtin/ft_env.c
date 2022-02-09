@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:25:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/08 00:25:25 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:31:06 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int	ft_env(void)
 		ft_putendl_fd(((t_env *)curr->content)->str, ms->fd_exit);
 		curr = curr->next;
 	}
-	return (0);
+	return (7);
 }
