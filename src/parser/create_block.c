@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:54:07 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/08 00:43:48 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 01:53:03 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,20 @@ void	create_block(char *str)
 	ms->blocks[i].type = get_type(str);
 	// LIMPA A STR
 	ms->blocks[i].str = get_clean_str(str);
-	// ABRE O ARQUIVO E COLOCA NA POSIÇÃO CORRETA.
-	if (ms->blocks[i].type == T_FILE_IN)
-		ms->fd_in[ms->group_size] = open_file_input(ms->blocks[i].str);
-	if (ms->blocks[i].type == T_FILE_OUT)
-		ms->fd_out[ms->group_size] = open_file_output(ms->blocks[i].str);
-	if (ms->blocks[i].type == T_FILE_APPEND)
-		ms->fd_out[ms->group_size] = open_file_append(ms->blocks[i].str);
 	// PEGA AS INFORMACOES DE ARGV, CMD E PATH_CMD
 	ms->blocks[i].argv = get_argv(ms->blocks[i].str);
+	// ABRE O ARQUIVO E COLOCA NA POSIÇÃO CORRETA.
+	if (ms->fd_in[ms->group_size] != -1)
+	{
+		if (ms->blocks[i].type == T_FILE_IN)
+			ms->fd_in[ms->group_size] = open_file_input(ms->blocks[i].str, ms->group_size);
+		if (ms->blocks[i].type == T_FILE_OUT)
+			ms->fd_out[ms->group_size] = open_file_output(ms->blocks[i].str, ms->group_size);
+		if (ms->blocks[i].type == T_FILE_APPEND)
+			ms->fd_out[ms->group_size] = open_file_append(ms->blocks[i].str, ms->group_size);
+		if (ms->blocks[i].type == T_FILE_DELIMITER)
+			ms->fd_in[ms->group_size] = open_file_delimiter(ms->blocks[i].str, ms->blocks[i].argv[0], ms->group_size);
+	}
 	ms->blocks[i].cmd = ms->blocks[i].argv[0];
 	ms->blocks[i].path_cmd = get_path_cmd(ms->blocks[i].cmd);
 	adjust_group(i, ms);

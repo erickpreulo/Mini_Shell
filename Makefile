@@ -6,29 +6,30 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 11:37:32 by egomes            #+#    #+#              #
-#    Updated: 2022/01/27 14:58:20 by egomes           ###   ########.fr        #
+#    Updated: 2022/02/10 21:58:37 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = 		mini_shell.c src/*/*.c
-NAME = 		mini_shell
+SRC = 		minishell.c src/*/*.c
+NAME = 		minishell
 INCLUD = 	-I headers
 CC = 		gcc
 CFLAGS = 	-Wall -Wextra -Werror
 AR = 		ar rcs
 LIBFT = 	libft
-LIBS	=	-L./$(LIBFT) -g -lft -lreadline -I .brew/opt/readline/include
+LIBS	=	-L./$(LIBFT) -g -lft
+RL     =    -I ~/.brew/opt/readline/include -L ~/.brew/opt/readline/lib -lreadline
 
 del:		re
-			./mini_shell
+			./minishell
 
 all:		$(NAME)
 
 $(NAME):	lib
-			@echo "mini_shell..."
-			@$(CC) $(CFLAGS) $(INCLUD) $(SRC) $(LIBS) -o $(NAME)
+			@echo "minishell..."
+			@$(CC) $(CFLAGS) $(INCLUD) $(SRC) $(LIBS) $(RL) -o $(NAME)
 			@rm -rf *.dSYM
-			@echo ">>> mini_shell done!"
+			@echo ">>> minishell done!"
 
 
 lib:	

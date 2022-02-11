@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:06:47 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/09 19:31:29 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/10 20:23:50 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	select_cmd(int i)
 	else if (ms->blocks[i].path_cmd)
 		return (ft_execve(i));
 
-	printf("%s not found, bitch!\n", ms->blocks[i].cmd);
+	printf("%s: command not found\n", ms->blocks[i].cmd);
 	//ms->final_status = 127;
 	return (127);
 }

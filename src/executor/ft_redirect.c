@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 00:36:16 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/09 19:22:27 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/10 23:46:32 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_redirect(int i)
 	}
 	// REDIRECT DE ARQUIVO
 	// PRIMEIRO
-	if (ms->blocks[i].first_of_group && ms->fd_in[ms->blocks[i].group])
+	if (ms->blocks[i].first_of_group && ms->fd_in[ms->blocks[i].group] && ms->fd_in[ms->blocks[i].group] != -1)
 		ms->fd_enter = ms->fd_in[ms->blocks[i].group];
 	// ULTIMO
 	if (ms->blocks[i].last_of_group && ms->fd_out[ms->blocks[i].group])

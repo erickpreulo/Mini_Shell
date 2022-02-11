@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/09 17:50:45 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 01:34:13 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <signal.h>
 # include <stdbool.h>
 # include <dirent.h>
+# include <termios.h>
 # include "../libft/libft.h"
 
 // **       DEFINE      **
@@ -35,6 +36,7 @@
 # define C_FILE_IN "<"
 # define C_FILE_OUT ">"
 # define C_FILE_APPEND ">>"
+# define C_FILE_DELIMITER "<<"
 
 // ***      STRUCT      ***
 
@@ -44,7 +46,8 @@ typedef enum s_type_sep
 	T_PIPE,
 	T_FILE_IN,
 	T_FILE_OUT,
-	T_FILE_APPEND
+	T_FILE_APPEND,
+	T_FILE_DELIMITER
 }	t_type_sep;
 
 typedef struct s_env
@@ -107,9 +110,10 @@ void			create_block(char *str);
 
 char			**get_argv(char *str);
 char			*get_clean_str(char *str);
-int				open_file_output(char *file_name);
-int				open_file_append(char *file_name);
-int				open_file_input(char *file_name);
+int				open_file_output(char *file_name, int group);
+int				open_file_append(char *file_name, int group);
+int				open_file_input(char *file_name, int group);
+int				open_file_delimiter(char *file_name, char *delimiter, int group);
 char			*get_path_cmd(char *cmd);
 t_type_sep		get_type(char *str);
 bool			is_file(t_type_sep type);
@@ -119,9 +123,6 @@ int				ft_executor(void);
 void			print_blocks(void);
 int				ft_exec_pipe(int i);
 void			ft_pipe(int i);
-int				open_file_output(char *file_name);
-int				open_file_append(char *file_name);
-int				open_file_input(char *file_name);
 void			ft_redirect(int i);
 int				select_cmd(int i);
 char			*get_current_dir(void);
@@ -138,5 +139,8 @@ t_env			*get_env(char *key);
 int				update_or_create_env(char *str);
 char			*get_env_value(char *key);
 char			*expand_env(char *str);
+int				get_next_line(char **line);
+void			clean_up(void);
+void			start_signal(void);
 
 #endif

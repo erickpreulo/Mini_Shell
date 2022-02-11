@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_shell.c                                       :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/08 00:18:38 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 01:47:32 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,12 @@ char	*get_line(void)
 	line = readline("\033[0;32mCyber38@TM \033[0;31m%> \033[0m");
 	if (!line)
 	{
-		printf("exit error line\n");
+		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		exit(0);
 	}
 	if (line)
 		add_history(line);
 	return (line);
-}
-
-void	sig_handler(int signum)
-{
-	(void)signum;
-	rl_redisplay();
-	rl_on_new_line();
-	//rl_replace_line("", 0);
-	printf("\n");
-	rl_redisplay();
 }
 
 int	main(int argc, char **argv, char **env)
@@ -60,7 +50,7 @@ int	main(int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
-	signal(2, sig_handler);
+	start_signal();
 	start_struct(env);
 	while (1)
 	{
@@ -68,6 +58,7 @@ int	main(int argc, char **argv, char **env)
 		line = get_line();
 		if (line[0] != '\0')
 			parse(line);
+		clean_up();
 	}
 	free(line);
 }

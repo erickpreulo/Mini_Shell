@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:22:49 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/09 19:54:51 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/10 22:42:24 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_execve(int i)
 		dup2(ms->fd_enter, STDIN_FILENO);
 		dup2(ms->fd_exit, STDOUT_FILENO);
 		execve(ms->blocks[i].path_cmd, ms->blocks[i].argv, ms->env);
-		return(8);
+		return(1);
 	}
 	else {
 		if (waitpid(pid, &status, 0) == -1)
