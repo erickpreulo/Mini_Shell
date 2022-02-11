@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:06:47 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/10 20:23:50 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 06:55:03 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	select_cmd(int i)
 	if (is_file(ms->blocks[i].type))
 		return (0);
 	if (ft_strcmp(ms->blocks[i].cmd, "exit") == 0)
-		return (ft_exit());
+		return (ft_exit(i));
 	else if (ft_strcmp(ms->blocks[i].cmd, "cd") == 0)
 		return (ft_cd(i));
 	else if (ft_strcmp(ms->blocks[i].cmd, "pwd") == 0)
@@ -35,8 +35,7 @@ int	select_cmd(int i)
 		return (ft_env());
 	else if (ms->blocks[i].path_cmd)
 		return (ft_execve(i));
-
-	printf("%s: command not found\n", ms->blocks[i].cmd);
-	//ms->final_status = 127;
+	ft_putstr_fd(ms->blocks[i].cmd, 2);
+	ft_putendl_fd(": command not found", 2);
 	return (127);
 }

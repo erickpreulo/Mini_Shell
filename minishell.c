@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 01:47:32 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 04:27:47 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ char	*get_line(void)
 	line = readline("\033[0;32mCyber38@TM \033[0;31m%> \033[0m");
 	if (!line)
 	{
+		get_ms()->sig_exit = 1;
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
-		exit(0);
+		exit_safe();
 	}
 	if (line)
 		add_history(line);
@@ -58,6 +59,7 @@ int	main(int argc, char **argv, char **env)
 		line = get_line();
 		if (line[0] != '\0')
 			parse(line);
+		free(line);
 		clean_up();
 	}
 	free(line);

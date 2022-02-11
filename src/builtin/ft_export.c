@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/09 19:30:48 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 04:27:04 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,16 @@ char	**get_sorted_env(void)
 	return (arr);
 }
 
-void	only_export(void)
+void	print(t_mini_shell *ms, t_env *content)
+{
+	ft_putstr_fd("declare -x ", ms->fd_exit);
+	ft_putstr_fd(content->key, ms->fd_exit);
+	ft_putstr_fd("=\"", ms->fd_exit);
+	ft_putstr_fd(ft_strchr(content->str, '=') + 1, ms->fd_exit);
+	ft_putendl_fd("\"", ms->fd_exit);
+}
+
+int	only_export(void)
 {
 	t_mini_shell	*ms;
 	t_list			*curr;
@@ -80,14 +89,12 @@ void	only_export(void)
 				curr = curr->next;
 				continue ;
 			}
-			ft_putstr_fd("declare -x ", ms->fd_exit);
-			ft_putstr_fd(content->key, ms->fd_exit);
-			ft_putstr_fd("=\"", ms->fd_exit);
-			ft_putstr_fd(ft_strchr(content->str, '=') + 1, ms->fd_exit);
-			ft_putendl_fd("\"", ms->fd_exit);
+			print(ms, content);
 			break ;
 		}
 	}
+	free(sorted);
+	return (0);
 }
 
 int	ft_export(int i)
@@ -96,8 +103,10 @@ int	ft_export(int i)
 
 	ms = get_ms();
 	if (ms->blocks[i].argv[1] == 0)
-		only_export();
-	else if (ft_strchr(ms->blocks[i].argv[1], '='))
+		return (only_export());
+	if (ms->blocks[i].argv[1][0] == '=')
+		return (1);
+	if (ft_strchr(ms->blocks[i].argv[1], '='))
 		update_or_create_env(ms->blocks[i].argv[1]);
-	return (5);
+	return (0);
 }

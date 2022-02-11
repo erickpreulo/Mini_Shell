@@ -6,47 +6,53 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:55:09 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/08 00:46:13 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 06:08:51 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
+void	get_argv_cont(char *str, char **arr, t_gamb *gamb, int *start)
+{
+	char aspas;
+
+	while (str[gamb->i] == ' ' && str[gamb->i] != '\0')
+		(gamb->i)++;
+	if (str[gamb->i] == '\"' || str[gamb->i] == '\'')
+	{
+		aspas = str[gamb->i];
+		(gamb->i)++;
+		*start = gamb->i;
+		while (str[gamb->i] != aspas)
+			(gamb->i)++;
+		if (aspas == '\"')
+			arr[(gamb->x)++] = expand_env(ft_substr(str,
+						*start, gamb->i - *start));
+		else
+			arr[(gamb->x)++] = ft_substr(str, *start, gamb->i - *start);
+		(gamb->i)++;
+	}
+	else
+	{
+		*start = gamb->i;
+		while (str[gamb->i] != ' ' && str[gamb->i] != '\"'
+			&& str[gamb->i] != '\'' && str[gamb->i] != '\0')
+			(gamb->i)++;
+		arr[(gamb->x)++] = expand_env(ft_substr(str, *start, gamb->i - *start));
+	}
+}
+
 char	**get_argv(char *str)
 {
 	char	**arr;
-	int		i;
 	int		start;
-	int		x;
+	t_gamb	gamb;
 
 	arr = malloc(200 * sizeof(char *));
-	x = 0;
-	i = 0;
-	while (str[i])
-	{
-		while (str[i] == ' ' && str[i] != '\0')
-			i++;
-		if (str[i] == '\"' || str[i] == '\'')
-		{
-			i++;
-			start = i;
-			while (str[i] != '\"' && str[i] != '\'')
-				i++;
-			if (str[i] == '\"')
-				arr[x++] = expand_env(ft_substr(str, start, i - start));
-			else
-				arr[x++] = ft_substr(str, start, i - start);
-			i++;
-		}
-		else
-		{
-			start = i;
-			while (str[i] != ' ' && str[i] != '\"'
-				&& str[i] != '\'' && str[i] != '\0')
-				i++;
-			arr[x++] = expand_env(ft_substr(str, start, i - start));
-		}
-	}
-	arr[x] = 0;
+	gamb.x = 0;
+	gamb.i = 0;
+	while (str[gamb.i])
+		get_argv_cont(str, arr, &gamb, &start);
+	arr[gamb.x] = 0;
 	return (arr);
 }

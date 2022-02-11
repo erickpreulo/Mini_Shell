@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_error.c                                       :+:      :+:    :+:   */
+/*   exit_safe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 19:00:33 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/10 19:17:15 by egomes           ###   ########.fr       */
+/*   Created: 2022/02/11 03:32:37 by acanterg          #+#    #+#             */
+/*   Updated: 2022/02/11 04:48:03 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void    exit_error(int i, char *cmd)
+void	exit_safe(void)
 {
-    printf("\033[0;32mCyber38@TM \033[0;31m%%> \033[0m: %s: %s\n", cmd, strerror(i));
+	t_mini_shell	*ms;
+
+	ms = get_ms();
+	free_lst_env();
+	exit(ms->exit_num);
 }

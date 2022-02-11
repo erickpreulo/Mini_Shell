@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:56:13 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/09 19:30:33 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 06:42:10 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,21 @@ int	ft_cd(int i)
 	res_dir = is_valid_dir(dir);
 	if (res_dir == 1)
 		change_dir(dir);
-	else if (res_dir == 2)
-		printf("cd: not a directory: %s\n", dir);
+	else if (res_dir == 2) {
+		ft_putstr_fd("cd: ", 2);
+		ft_putstr_fd(dir, 2);
+		ft_putendl_fd(": Not a directory", 2);
+		free(dir);
+		return (1);
+	}
 	else
-		printf("cd: no such file or directory: %s\n", dir);
+	{
+		ft_putstr_fd("cd: ", 2);
+		ft_putstr_fd(dir, 2);
+		ft_putendl_fd(": No such file or directory", 2);
+		free(dir);
+		return (1);
+	}
 	free(dir);
-	return (2);
+	return (0);
 }

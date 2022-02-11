@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:47 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 01:44:24 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 04:36:51 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_type_sep	get_type(char *str)
 
 bool	is_file(t_type_sep type)
 {
-	if (type == T_FILE_APPEND || type == T_FILE_OUT || type == T_FILE_IN || type == T_FILE_DELIMITER)
+	if (type == T_FILE_APPEND || type == T_FILE_OUT
+		|| type == T_FILE_IN || type == T_FILE_DELIMITER)
 		return (true);
 	return (false);
 }

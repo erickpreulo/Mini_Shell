@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:29:33 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/09 19:41:46 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 04:36:30 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int	ft_pwd(void)
 	dir = get_current_dir();
 	ft_putendl_fd(dir, get_ms()->fd_exit);
 	free(dir);
-	return (3);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:49:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/10 23:03:11 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 04:47:49 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@ void	start_struct(char **env)
 void	reset_struct(void)
 {
 	t_mini_shell	*ms;
+	int				i;
 
 	ms = get_ms();
 	ms->fd_enter = 0;
 	ms->fd_exit = 1;
-	for (int i = 0; i < 50; i++)
+	ms->sig_exit = 0;
+	ms->exit_num = 0;
+	i = -1;
+	while (++i < 50)
 	{
 		ms->fd_in[i] = 0;
 		ms->fd_out[i] = 0;

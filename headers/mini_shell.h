@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 01:34:13 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 04:47:41 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,15 @@ typedef struct s_mini_shell
 	int		fd_exit;
 	int		fd_enter;
 	int		final_status;
+	int		sig_exit;
+	int		exit_num;
 }			t_mini_shell;
+
+typedef struct s_gamb
+{
+	int	i;
+	int	x;
+}				t_gamb;
 
 // ******   SRC   ****** 
 
@@ -97,7 +105,7 @@ int				ft_env(void);
 int				ft_export(int i);
 int				ft_pwd(void);
 int				ft_unset(int i);
-int				ft_exit(void);
+int				ft_exit(int i);
 int				ft_cd(int i);
 
 // ****    other_functions   ****
@@ -113,7 +121,8 @@ char			*get_clean_str(char *str);
 int				open_file_output(char *file_name, int group);
 int				open_file_append(char *file_name, int group);
 int				open_file_input(char *file_name, int group);
-int				open_file_delimiter(char *file_name, char *delimiter, int group);
+int				open_file_delimiter(char *file_name,
+					char *delimiter, int group);
 char			*get_path_cmd(char *cmd);
 t_type_sep		get_type(char *str);
 bool			is_file(t_type_sep type);
@@ -139,8 +148,14 @@ t_env			*get_env(char *key);
 int				update_or_create_env(char *str);
 char			*get_env_value(char *key);
 char			*expand_env(char *str);
+char			**get_env_temp(void);
+void			free_lst_env(void);
 int				get_next_line(char **line);
 void			clean_up(void);
 void			start_signal(void);
+void			exit_safe(void);
+bool			check_valid_filename(char *line);
+
+bool			is_separator(char c);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: egomes <egomes@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 11:37:32 by egomes            #+#    #+#              #
-#    Updated: 2022/02/10 21:58:37 by egomes           ###   ########.fr        #
+#    Updated: 2022/02/11 07:09:29 by egomes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRC = 		minishell.c src/*/*.c
 NAME = 		minishell
 INCLUD = 	-I headers
 CC = 		gcc
-CFLAGS = 	-Wall -Wextra -Werror
+CFLAGS = 	-Wall -Wextra -Werror #-fsanitize=address -g
 AR = 		ar rcs
 LIBFT = 	libft
 LIBS	=	-L./$(LIBFT) -g -lft
@@ -46,4 +46,3 @@ fclean: clean
 		@rm -f $(NAME)
 
 re: 	fclean all
-
