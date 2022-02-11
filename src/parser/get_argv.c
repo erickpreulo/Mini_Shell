@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:55:09 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/11 06:08:51 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 07:33:34 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	get_argv_cont(char *str, char **arr, t_gamb *gamb, int *start)
 {
-	char aspas;
+	char	aspas;
 
-	while (str[gamb->i] == ' ' && str[gamb->i] != '\0')
-		(gamb->i)++;
 	if (str[gamb->i] == '\"' || str[gamb->i] == '\'')
 	{
 		aspas = str[gamb->i];
@@ -52,7 +50,11 @@ char	**get_argv(char *str)
 	gamb.x = 0;
 	gamb.i = 0;
 	while (str[gamb.i])
+	{
+		while (str[gamb.i] == ' ' && str[gamb.i] != '\0')
+			(gamb.i)++;
 		get_argv_cont(str, arr, &gamb, &start);
+	}
 	arr[gamb.x] = 0;
 	return (arr);
 }

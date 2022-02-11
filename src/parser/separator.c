@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:53:59 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 06:34:32 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 07:48:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ void	jump_super_separator(char *str, int *i)
 	}
 }
 
-bool	is_separator(char c)
-{
-	if (c == '|' || c == '>' || c == '<')
-		return (true);
-	return (false);
-}
-
 void	ft_print(char *line, int i)
 {
 	ft_putstr_fd("syntax error near unexpected token `", 2);
@@ -45,10 +38,10 @@ void	ft_print(char *line, int i)
 	ft_putendl_fd("'", 2);
 }
 
-bool inside_aspas(char *line, int i)
+bool	inside_aspas(char *line, int i)
 {
-	int j = 0;
-	int count;
+	int	j;
+	int	count;
 
 	count = 0;
 	j = 0;
@@ -70,11 +63,25 @@ bool inside_aspas(char *line, int i)
 	}
 	if (count % 2 == 1)
 		return (true);
-		
 	return (false);
 }
 
-bool	check_valid_filename(char *line)
+bool	test_condition(char *line, int i)
+{
+	if (line[i] == '\0')
+	{
+		ft_putendl_fd("syntax error near unexpected token `newline'", 2);
+		return (true);
+	}
+	if (is_separator(line[i]))
+	{
+		ft_print(line, i);
+		return (true);
+	}
+	return (false);
+}
+
+bool	check_valid_file(char *line)
 {
 	int	i;
 
@@ -89,17 +96,9 @@ bool	check_valid_filename(char *line)
 		while (line[i] == ' ')
 			i++;
 		if (inside_aspas(line, i))
-			continue;
-		if (line[i] == '\0')
-		{
-			ft_putendl_fd("syntax error near unexpected token `newline'", 2);
+			continue ;
+		if (test_condition(line, i))
 			return (false);
-		}
-		if (is_separator(line[i]))
-		{
-			ft_print(line, i);
-			return (false);
-		}
 	}
 	return (true);
 }

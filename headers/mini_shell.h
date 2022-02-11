@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 04:47:41 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 07:48:52 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ typedef struct s_gamb
 {
 	int	i;
 	int	x;
+	int	start;
 }				t_gamb;
 
 // ******   SRC   ****** 
@@ -115,7 +116,6 @@ int				ft_execve(int i);
 t_mini_shell	*get_ms(void);
 void			parse(char *line);
 void			create_block(char *str);
-
 char			**get_argv(char *str);
 char			*get_clean_str(char *str);
 int				open_file_output(char *file_name, int group);
@@ -126,7 +126,6 @@ int				open_file_delimiter(char *file_name,
 char			*get_path_cmd(char *cmd);
 t_type_sep		get_type(char *str);
 bool			is_file(t_type_sep type);
-
 int				ft_exec_pipe(int i);
 int				ft_executor(void);
 void			print_blocks(void);
@@ -141,7 +140,6 @@ void			ft_pipe_old(int i);
 void			ft_redirect_old(int i);
 void			start_struct(char **env);
 void			reset_struct(void);
-
 void			get_env_list(char **env);
 t_env			*create_t_env(char *line);
 t_env			*get_env(char *key);
@@ -154,8 +152,7 @@ int				get_next_line(char **line);
 void			clean_up(void);
 void			start_signal(void);
 void			exit_safe(void);
-bool			check_valid_filename(char *line);
-
+bool			check_valid_file(char *line);
 bool			is_separator(char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:17 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 06:14:38 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 07:43:18 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,7 @@ int	have_separator(char *line, int i)
 	return (0);
 }
 
-char	*take_off_quotes(char *line)
-{
-	int	i;
-
-	i = -1;
-	while (line[++i] != '\0')
-		line[i] = line[i + 1];
-	line[i - 2] = '\0';
-	return (line);
-}
-
-bool	check_valid_aspas(char *line)
+bool	check_aspas(char *line)
 {
 	int		i;
 	char	aspas;
@@ -54,13 +43,12 @@ bool	check_valid_aspas(char *line)
 		while (line[i] != '\0' && line[i] != '\'' && line[i] != '\"')
 			i++;
 		if (line[i] == '\0')
-			break;
-		aspas = line[i];
-		i++;
+			break ;
+		aspas = line[i++];
 		while (line[i] != '\0' && line[i] != aspas)
 			i++;
 		if (line[i] == '\0')
-			break;
+			break ;
 		aspas = '\0';
 		i++;
 	}
@@ -74,7 +62,7 @@ bool	check_valid_aspas(char *line)
 
 bool	check_empty(char *line)
 {
-	while(*line)
+	while (*line)
 	{
 		if (*line != ' ' && *line != '\t' && *line != '\0')
 			return (true);
@@ -83,42 +71,40 @@ bool	check_empty(char *line)
 	return (false);
 }
 
+void	parse_2(char *aspas, char *line, t_gamb *gamb)
+{
+	if (*aspas)
+	{
+		*aspas = 0;
+		gamb->i++;
+	}
+	if (have_separator(line, gamb->i))
+	{
+		create_block(ft_substr(line, gamb->start, gamb->i - gamb->start));
+		gamb->start = gamb->i;
+	}
+}
+
 void	parse(char *line)
 {
-	int		i;
-	int		start;
-	char	*str;
+	t_gamb	gamb;
 	char	aspas;
 
 	aspas = 0;
-	i = -1;
-	start = 0;
-	if (!check_valid_aspas(line) || !check_valid_filename(line) || !check_empty(line))
+	gamb.i = -1;
+	gamb.start = 0;
+	if (!check_aspas(line) || !check_valid_file(line) || !check_empty(line))
 		return ;
-	while (line[++i] != '\0')
+	while (line[++gamb.i] != '\0')
 	{		
-		if (line[i] == '\'' || line[i] == '\"')
-		{
-			aspas = line[i];
-			i++;
-		}
-		while (aspas != 0 && line[i] != aspas && line[i] != '\0')
-			i++;
-		if (line[i] == '\0')
-			break;
-		if (aspas)
-		{
-			aspas = 0;
-			i++;
-		}
-		if (have_separator(line, i))
-		{
-			str = ft_substr(line, start, i - start);
-			create_block(str);
-			start = i;
-		}
+		if (line[gamb.i] == '\'' || line[gamb.i] == '\"')
+			aspas = line[gamb.i++];
+		while (aspas != 0 && line[gamb.i] != aspas && line[gamb.i] != '\0')
+			gamb.i++;
+		if (line[gamb.i] == '\0')
+			break ;
+		parse_2(&aspas, line, &gamb);
 	}
-	str = ft_substr(line, start, i);
-	create_block(str);
+	create_block(ft_substr(line, gamb.start, gamb.i));
 	ft_executor();
 }

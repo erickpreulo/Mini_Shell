@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:30:39 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 04:27:04 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/11 07:32:39 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,13 @@ void	print(t_mini_shell *ms, t_env *content)
 	ft_putendl_fd("\"", ms->fd_exit);
 }
 
-int	only_export(void)
+int	only_export(t_mini_shell	*ms)
 {
-	t_mini_shell	*ms;
 	t_list			*curr;
 	t_env			*content;
 	char			**sorted;
 	int				i;
 
-	ms = get_ms();
 	sorted = get_sorted_env();
 	i = -1;
 	while (sorted[++i])
@@ -103,7 +101,7 @@ int	ft_export(int i)
 
 	ms = get_ms();
 	if (ms->blocks[i].argv[1] == 0)
-		return (only_export());
+		return (only_export(ms));
 	if (ms->blocks[i].argv[1][0] == '=')
 		return (1);
 	if (ft_strchr(ms->blocks[i].argv[1], '='))
