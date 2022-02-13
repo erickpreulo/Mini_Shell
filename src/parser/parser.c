@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:17 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 07:43:18 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/13 16:27:56 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,22 @@ int	have_separator(char *line, int i)
 
 bool	check_aspas(char *line)
 {
-	int		i;
-	char	aspas;
+	const int	size = ft_strlen(line);
+	int			i;
+	char		aspas;
 
 	aspas = 0;
 	i = 0;
-	while (line[i] != '\0')
+	while (i < size)
 	{
 		while (line[i] != '\0' && line[i] != '\'' && line[i] != '\"')
 			i++;
-		if (line[i] == '\0')
+		if (i >= size)
 			break ;
 		aspas = line[i++];
-		while (line[i] != '\0' && line[i] != aspas)
+		while (i < size && line[i] != aspas)
 			i++;
-		if (line[i] == '\0')
+		if (i >= size)
 			break ;
 		aspas = '\0';
 		i++;
@@ -87,6 +88,7 @@ void	parse_2(char *aspas, char *line, t_gamb *gamb)
 
 void	parse(char *line)
 {
+	const int size = ft_strlen(line);
 	t_gamb	gamb;
 	char	aspas;
 
@@ -95,13 +97,13 @@ void	parse(char *line)
 	gamb.start = 0;
 	if (!check_aspas(line) || !check_valid_file(line) || !check_empty(line))
 		return ;
-	while (line[++gamb.i] != '\0')
+	while (++gamb.i < size)
 	{		
 		if (line[gamb.i] == '\'' || line[gamb.i] == '\"')
 			aspas = line[gamb.i++];
 		while (aspas != 0 && line[gamb.i] != aspas && line[gamb.i] != '\0')
 			gamb.i++;
-		if (line[gamb.i] == '\0')
+		if (gamb.i >= size)
 			break ;
 		parse_2(&aspas, line, &gamb);
 	}

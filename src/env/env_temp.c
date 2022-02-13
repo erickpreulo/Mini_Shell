@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_temp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:10:03 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/11 04:37:04 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:06:04 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,8 @@ char	**get_env_temp(void)
 void	free_lst_env(void)
 {
 	t_mini_shell	*ms;
-	t_list			*curr;
-	t_list			*temp;
 
 	ms = get_ms();
-	curr = *(ms->lst_env);
-	while (curr)
-	{
-		temp = curr;
-		free(((t_env *)curr->content)->key);
-		free(((t_env *)curr->content)->str);
-		free((t_env *)curr->content);
-		curr = curr->next;
-		free(temp);
-	}
+	ft_lstclear(ms->lst_env, del_env_content);
 	free(ms->lst_env);
 }

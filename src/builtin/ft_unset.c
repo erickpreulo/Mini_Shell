@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:30:12 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 04:37:07 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:02:43 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	unset_after(t_list *curr, t_list *prev, char *var)
 		if (ft_strcmp(((t_env *)curr->content)->key, var) == 0)
 		{
 			prev->next = curr->next;
-			free(curr);
+			ft_lstdelone(curr, del_env_content);
 			return (0);
 		}
 		prev = curr;
@@ -45,7 +45,7 @@ int	ft_unset(int i)
 	if (ft_strcmp(((t_env *)curr->content)->key, var) == 0)
 	{
 		*(ms->lst_env) = curr->next;
-		free(curr);
+		ft_lstdelone(curr, del_env_content);
 		return (0);
 	}
 	prev = curr;

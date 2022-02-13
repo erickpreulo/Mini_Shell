@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:12:40 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/08 00:37:28 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:15:28 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,22 @@ char	*get_str_before(char *str, int *i)
 
 char	*join_all(char *str, char *bfr, char *env, char *aft)
 {
-	char	*str_mid;
-	char	*str_final;
+	char			*str_mid;
+	char			*str_final;
+	t_mini_shell	*ms;
 
+	ms = get_ms();
 	str_mid = ft_strjoin(bfr, env);
 	str_final = ft_strjoin(str_mid, aft);
 	free(str);
 	free(bfr);
 	free(aft);
 	free(str_mid);
+	if (ms->has_interrogation_key)
+	{
+		free(env);
+		ms->has_interrogation_key = false;
+	}
 	return (expand_env(str_final));
 }
 
@@ -63,6 +70,8 @@ char	*expand_env(char *str)
 	str_bfr = get_str_before(str, &i);
 	key = get_key(str, &i);
 	str_env = get_env_value(key);
+	if (ft_strcmp(key, "?") == 0)
+		get_ms()->has_interrogation_key = true;
 	free(key);
 	str_aft = ft_substr(str, i, ft_strlen(str) - i);
 	if (str_env)

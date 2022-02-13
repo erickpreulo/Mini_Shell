@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_shell.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 07:48:52 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:13:48 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # define C_FILE_OUT ">"
 # define C_FILE_APPEND ">>"
 # define C_FILE_DELIMITER "<<"
+
+# define MAX_BLOCKS 256
 
 // ***      STRUCT      ***
 
@@ -71,23 +73,22 @@ typedef struct s_block
 
 typedef struct s_mini_shell
 {
-	t_block	blocks[50];
+	t_block	blocks[MAX_BLOCKS];
 	int		group_size;
 	int		size;
-	int		fd_in[50];
-	int		fd_out[50];
+	int		fd_in[MAX_BLOCKS];
+	int		fd_out[MAX_BLOCKS];
 	int		is_pipe;
-	int		fd[50][2];
-	int		pid[50];
+	int		fd[MAX_BLOCKS][2];
 	int		current_pipe;
 	char	**env;
 	t_list	**lst_env;
-	char	**contact;
 	int		fd_exit;
 	int		fd_enter;
 	int		final_status;
 	int		sig_exit;
 	int		exit_num;
+	bool	has_interrogation_key;
 }			t_mini_shell;
 
 typedef struct s_gamb
@@ -138,7 +139,6 @@ void			free_stuff(void);
 int				get_next_line(char **line);
 void			ft_pipe_old(int i);
 void			ft_redirect_old(int i);
-void			start_struct(char **env);
 void			reset_struct(void);
 void			get_env_list(char **env);
 t_env			*create_t_env(char *line);
@@ -154,5 +154,6 @@ void			start_signal(void);
 void			exit_safe(void);
 bool			check_valid_file(char *line);
 bool			is_separator(char c);
+void			del_env_content(void *env_temp);
 
 #endif

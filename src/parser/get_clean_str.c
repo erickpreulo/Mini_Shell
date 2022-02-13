@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_clean_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:18:57 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/08 00:46:36 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/13 17:21:42 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 char	*get_clean_str(char *str)
 {
 	int	len;
+	char *temp;
+	char *final;
 
+	temp = str;
 	while (*str == '|' || *str == '>' || *str == '<' || *str == ' ')
 		str++;
 	len = ft_strlen(str) - 1;
@@ -24,5 +27,7 @@ char	*get_clean_str(char *str)
 		str[len] = '\0';
 		len--;
 	}
-	return (str);
+	final = ft_strdup(str);
+	free(temp);
+	return (final);
 }

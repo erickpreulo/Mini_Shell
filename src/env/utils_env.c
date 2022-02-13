@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:23:22 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 04:37:05 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:17:58 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	update_or_create_env(char *var_env)
 	key = ft_strdup(var_env);
 	ft_strchr(key, '=')[0] = '\0';
 	env = get_env(key);
+	free(key);
 	if (env)
 	{
 		free(env->str);
@@ -33,7 +34,6 @@ int	update_or_create_env(char *var_env)
 		ft_lstadd_back(ms->lst_env, ft_lstnew(create_t_env(var_env)));
 		return (0);
 	}
-	free(key);
 	return (1);
 }
 

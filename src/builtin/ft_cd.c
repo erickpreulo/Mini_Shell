@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:56:13 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 07:28:24 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:35:34 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,31 +61,34 @@ void	change_dir(char *dir)
 	free(str_join);
 }
 
+int	print_error_cd(char *msg, char* dir)
+{
+	ft_putstr_fd("cd: ", 2);
+	if (dir) {
+		ft_putstr_fd(dir, 2);
+		free(dir);
+	}
+	ft_putendl_fd(msg, 2);
+	return (1);
+}
+
+
 int	ft_cd(int i)
 {
 	char	*dir;
 	int		res_dir;
 
+	if (ft_strcmp(get_ms()->blocks[i].argv[1], "-") == 0
+		&& !get_env_value("OLDPWD"))
+		return (print_error_cd(": OLDPWD not set", 0));
 	dir = ft_strdup(get_dir(i));
 	res_dir = is_valid_dir(dir);
 	if (res_dir == 1)
 		change_dir(dir);
 	else if (res_dir == 2)
-	{
-		ft_putstr_fd("cd: ", 2);
-		ft_putstr_fd(dir, 2);
-		ft_putendl_fd(": Not a directory", 2);
-		free(dir);
-		return (1);
-	}
+		return (print_error_cd(": Not a directory", dir));
 	else
-	{
-		ft_putstr_fd("cd: ", 2);
-		ft_putstr_fd(dir, 2);
-		ft_putendl_fd(": No such file or directory", 2);
-		free(dir);
-		return (1);
-	}
+		return (print_error_cd(": No such file or directory", dir));
 	free(dir);
 	return (0);
 }
