@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:56:13 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 16:35:49 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 16:38:56 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	*get_dir(int i)
 		temp = get_env_value("OLDPWD");
 		if (!temp)
 			print_error_cd(": OLDPWD not set", 0);
+		else
+			ft_putendl_fd(temp, STDOUT_FILENO);
 		return (temp);
 	}
 	else

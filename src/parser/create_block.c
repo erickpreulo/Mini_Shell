@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:54:07 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/15 14:47:17 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 16:39:32 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	adjust_group(int i, t_mini_shell *ms)
 	if (ms->searching_new_group)
 	{
 		ms->searching_new_group = false;
-		ms->blocks[i].first_of_group = true;
+		//ms->blocks[i].first_of_group = true;
 		ms->group_size++;
 	}
 	ms->blocks[i].group = ms->group_size;
