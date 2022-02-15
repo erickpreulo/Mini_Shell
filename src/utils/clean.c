@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 01:27:57 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/13 17:29:31 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:27:03 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	close_fds(t_mini_shell *ms)
 	i = -1;
 	while (++i < ms->group_size)
 	{
+		if (i > 0)
+		{
+			close(ms->blocks[i].pipe[PIPE_READ]);
+			close(ms->blocks[i].pipe[PIPE_WRITE]);
+		}
 		if (ms->fd_in[i] > 0)
 		{
 			close(ms->fd_in[i]);

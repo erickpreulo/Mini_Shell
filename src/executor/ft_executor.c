@@ -6,27 +6,11 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 09:47:51 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 16:37:14 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:25:24 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-
-
-void	ft_close_pipe(int i)
-{
-	t_mini_shell *ms;
-
-	ms = get_ms();
-	if (!ms->blocks[i].last_of_group)
-		close(ms->blocks[i + 1].pipe[PIPE_WRITE]);
-	if (ms->blocks[i].type == T_PIPE)
-		close(ms->blocks[i].pipe[PIPE_READ]);
-	//if (ms->blocks[i].first_of_group && ms->fd_enter != STDIN_FILENO)
-		//close(ms->fd_enter);
-	if (ms->blocks[i].last_of_group && ms->fd_exit != STDOUT_FILENO)
-		close(ms->fd_exit);
-}
 
 int	ft_executor(void)
 {
@@ -47,7 +31,6 @@ int	ft_executor(void)
 			close(ms->fd_enter);
 		if (ms->fd_exit != STDOUT_FILENO)
 			close(ms->fd_exit);
-		//ft_close_pipe(i);
 	}
 	return (0);
 }
