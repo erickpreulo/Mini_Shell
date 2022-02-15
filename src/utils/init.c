@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:49:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/13 18:15:58 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:03:58 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	reset_struct(void)
 	ms->fd_exit = 1;
 	ms->sig_exit = 0;
 	ms->exit_num = 0;
+	ms->searching_new_group = false;
 	ms->has_interrogation_key = false;
 	i = -1;
 	while (++i < MAX_BLOCKS)
@@ -31,5 +32,4 @@ void	reset_struct(void)
 	}
 	ms->size = 0;
 	ms->group_size = 0;
-	ms->current_pipe = 0;
 }

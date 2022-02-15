@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/13 17:41:53 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 16:09:08 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,6 @@ t_mini_shell	*get_ms(void)
 	if (!ms)
 		exit(0);
 	return (ms);
-}
-
-char	*get_line(void)
-{
-	char	*line;
-
-	line = NULL;
-	if (line)
-	{
-		free(line);
-		line = NULL;
-	}
-	line = readline("\033[0;32mCyber38@TM \033[0;31m%> \033[0m");
-	if (!line)
-	{
-		get_ms()->sig_exit = 1;
-		ft_putstr_fd("exit\n", STDOUT_FILENO);
-		exit_safe();
-	}
-	if (line)
-		add_history(line);
-	return (line);
 }
 
 int	main(int argc, char **argv, char **env)

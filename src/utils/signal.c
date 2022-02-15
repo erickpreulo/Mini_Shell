@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 01:33:50 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 04:36:21 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/15 16:29:33 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ void	sig_handler(int signum)
 	if (signum == SIGINT)
 	{
 		get_ms()->sig_exit = 1;
+		get_ms()->final_status = 130;
 		ft_putchar_fd('\n', STDOUT_FILENO);
 		rl_on_new_line();
 		rl_replace_line("", 0);
+		show_pwd();
 		rl_redisplay();
 	}
 	else if (signum == SIGQUIT)
 	{
 		get_ms()->sig_exit = 1;
 		rl_on_new_line();
+		show_pwd();
 		rl_redisplay();
 	}
 }

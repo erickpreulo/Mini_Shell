@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 11:49:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 07:30:55 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/15 16:34:51 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	ft_exit(int i)
 	int				j;
 
 	ms = get_ms();
-	if (!ms->blocks[i].first_of_group
-		|| (ms->blocks[i].first_of_group && !ms->blocks[i].last_of_group))
+	if (ms->size > 1)
 		return (0);
 	ft_putendl_fd("exit", 1);
 	if (ms->blocks[i].argv[1] == 0)

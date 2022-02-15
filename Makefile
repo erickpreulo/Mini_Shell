@@ -6,7 +6,7 @@
 #    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 11:37:32 by egomes            #+#    #+#              #
-#    Updated: 2022/02/13 18:38:50 by acanterg         ###   ########.fr        #
+#    Updated: 2022/02/15 14:39:55 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ AR = 		ar rcs
 LIBFT = 	libft
 LIBS	=	-L./$(LIBFT) -g -lft
 RL     =    -I ~/.brew/opt/readline/include -L ~/.brew/opt/readline/lib -lreadline
+
+test:		re
+			./minishell
 
 all:		$(NAME)
 

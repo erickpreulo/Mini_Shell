@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/13 18:13:48 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 16:36:37 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@
 # define C_FILE_APPEND ">>"
 # define C_FILE_DELIMITER "<<"
 
+# define PIPE_READ 0
+# define PIPE_WRITE 1
+
 # define MAX_BLOCKS 256
 
 // ***      STRUCT      ***
@@ -67,8 +70,8 @@ typedef struct s_block
 	char		*str;
 	int			fd;
 	int			group;
-	bool		first_of_group;
 	bool		last_of_group;
+	int			pipe[2];
 }				t_block;
 
 typedef struct s_mini_shell
@@ -78,9 +81,6 @@ typedef struct s_mini_shell
 	int		size;
 	int		fd_in[MAX_BLOCKS];
 	int		fd_out[MAX_BLOCKS];
-	int		is_pipe;
-	int		fd[MAX_BLOCKS][2];
-	int		current_pipe;
 	char	**env;
 	t_list	**lst_env;
 	int		fd_exit;
@@ -89,6 +89,7 @@ typedef struct s_mini_shell
 	int		sig_exit;
 	int		exit_num;
 	bool	has_interrogation_key;
+	bool	searching_new_group;
 }			t_mini_shell;
 
 typedef struct s_gamb
@@ -133,6 +134,8 @@ void			print_blocks(void);
 int				ft_exec_pipe(int i);
 void			ft_pipe(int i);
 void			ft_redirect(int i);
+void			redirect_input(int i);
+void			redirect_output(int i);
 int				select_cmd(int i);
 char			*get_current_dir(void);
 void			free_stuff(void);
@@ -155,5 +158,7 @@ void			exit_safe(void);
 bool			check_valid_file(char *line);
 bool			is_separator(char c);
 void			del_env_content(void *env_temp);
+void			show_pwd();
+char			*get_line();
 
 #endif

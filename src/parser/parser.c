@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:17 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/13 16:27:56 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:27:26 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,13 @@ void	parse(char *line)
 	char	aspas;
 
 	aspas = 0;
-	gamb.i = -1;
+	gamb.i = 0;
 	gamb.start = 0;
 	if (!check_aspas(line) || !check_valid_file(line) || !check_empty(line))
 		return ;
-	while (++gamb.i < size)
+	while (is_separator(line[gamb.i]))
+		gamb.i++;
+	while (gamb.i < size)
 	{		
 		if (line[gamb.i] == '\'' || line[gamb.i] == '\"')
 			aspas = line[gamb.i++];
@@ -106,7 +108,9 @@ void	parse(char *line)
 		if (gamb.i >= size)
 			break ;
 		parse_2(&aspas, line, &gamb);
+		gamb.i++;
 	}
 	create_block(ft_substr(line, gamb.start, gamb.i));
+	//print_blocks();
 	ft_executor();
 }

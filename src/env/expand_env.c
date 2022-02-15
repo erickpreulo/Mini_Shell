@@ -6,11 +6,24 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:12:40 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/13 18:15:28 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:25:29 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
+
+bool	key_can_continue(char c)
+{
+	if (c == ' ' || c == '\0')
+		return (false);
+	if (c == '\'' || c == '\"')
+		return (false);
+	if (c == '\t' || c == '=')
+		return (false);
+	if (c == '.' || c == ',')
+		return (false);
+	return (true);
+}
 
 char	*get_key(char *str, int *i)
 {
@@ -18,7 +31,7 @@ char	*get_key(char *str, int *i)
 	int		start;
 
 	start = *i;
-	while (str[*i] != ' ' && str[*i] != '\0')
+	while (key_can_continue(str[*i]))
 		*i += 1;
 	key = ft_substr(str, start, *i - start);
 	return (key);
@@ -78,37 +91,3 @@ char	*expand_env(char *str)
 		return (join_all(str, str_bfr, str_env, str_aft));
 	return (join_all(str, str_bfr, "", str_aft));
 }
-
-// char *expand_env(char *str)
-// {   
-//	 char *new_str;
-//     char *new_str2;
-//     char *str1;
-//     char *str2;
-//     char *env_key;
-//     char *env_value;
-//     int start;
-//     int i;
-
-//     if (ft_strchr(str, '$') == 0)
-//         return (str);
-
-//     start = i;
-//     while (str[i] != ' ' && str[i] != '\0')
-//         i++;
-//     env_key = ft_substr(str, start, i - start);
-//     env_value = get_env_value(env_key);
-//     str2 = ft_substr(str, i, ft_strlen(str));
-
-//     new_str = ft_strjoin(str1, env_value);
-//     new_str2 = ft_strjoin(new_str, str2);
-
-//     free(str);
-//     free(str1);
-//     free(str2);
-//     free(new_str);
-//     //free(env_value);
-//     free(env_key);
-
-//     return (expand_env(new_str2));
-// }
