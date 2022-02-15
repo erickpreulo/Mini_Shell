@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:56:13 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 16:38:56 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:33:18 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	print_error_cd(char *msg, char* dir)
 {
-	ft_putstr_fd("cd: ", 2);
+	ft_putstr_fd("cd: ", STDERR_FILENO);
 	if (dir) {
-		ft_putstr_fd(dir, 2);
+		ft_putstr_fd(dir, STDERR_FILENO);
 		free(dir);
 	}
-	ft_putendl_fd(msg, 2);
-	return (1);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	return (EXIT_FAILURE);
 }
 
 char	*get_dir(int i)
@@ -95,7 +95,7 @@ int	ft_cd(int i)
 		return (0);
 	hold = get_dir(i);
 	if (!hold)
-		return (1);
+		return (EXIT_FAILURE);
 	dir = ft_strdup(hold);
 	res_dir = is_valid_dir(dir);
 	if (res_dir == 1)

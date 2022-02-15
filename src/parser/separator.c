@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   separator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:53:59 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 07:48:16 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/15 20:32:39 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	jump_super_separator(char *str, int *i)
 
 void	ft_print(char *line, int i)
 {
-	ft_putstr_fd("syntax error near unexpected token `", 2);
-	ft_putchar_fd(line[i], 2);
+	ft_putstr_fd("syntax error near unexpected token `", STDERR_FILENO);
+	ft_putchar_fd(line[i], STDERR_FILENO);
 	if (line[i + 1] == line[i] && line[i + 1] != '|')
-		ft_putchar_fd(line[i + 1], 2);
-	ft_putendl_fd("'", 2);
+		ft_putchar_fd(line[i + 1], STDERR_FILENO);
+	ft_putendl_fd("'", STDERR_FILENO);
 }
 
 bool	inside_aspas(char *line, int i)

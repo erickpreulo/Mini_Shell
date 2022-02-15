@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 11:49:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 16:34:51 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:32:51 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	printf_err_num(t_mini_shell	*ms, char *arg)
 {
-	ft_putstr_fd("exit: ", 2);
-	ft_putstr_fd(arg, 2);
-	ft_putendl_fd(": numeric argument required", 2);
+	ft_putstr_fd("exit: ", STDERR_FILENO);
+	ft_putstr_fd(arg, STDERR_FILENO);
+	ft_putendl_fd(": numeric argument required", STDERR_FILENO);
 	ms->exit_num = 255;
 	exit_safe();
 }

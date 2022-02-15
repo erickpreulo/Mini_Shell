@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   select_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:06:47 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 06:55:03 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/15 20:33:00 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	select_cmd(int i)
 		return (ft_env());
 	else if (ms->blocks[i].path_cmd)
 		return (ft_execve(i));
-	ft_putstr_fd(ms->blocks[i].cmd, 2);
-	ft_putendl_fd(": command not found", 2);
+	ft_putstr_fd(ms->blocks[i].cmd, STDERR_FILENO);
+	ft_putendl_fd(": command not found", STDERR_FILENO);
 	return (127);
 }

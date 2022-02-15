@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:57:39 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/15 14:11:55 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:32:14 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	open_file_output(char *file_name, int group)
 	fd = open(file_name, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (fd == -1)
 	{
-		ft_putstr_fd(file_name, 2);
-		ft_putendl_fd(": No such file or directory", 2);
+		ft_putstr_fd(file_name, STDERR_FILENO);
+		ft_putendl_fd(": No such file or directory", STDERR_FILENO);
 		get_ms()->final_status = 1;
 		return (-1);
 	}
@@ -42,8 +42,8 @@ int	open_file_append(char *file_name, int group)
 	fd = open(file_name, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd == -1)
 	{
-		ft_putstr_fd(file_name, 2);
-		ft_putendl_fd(": No such file or directory", 2);
+		ft_putstr_fd(file_name, STDERR_FILENO);
+		ft_putendl_fd(": No such file or directory", STDERR_FILENO);
 		get_ms()->final_status = 1;
 		return (-1);
 	}
@@ -58,8 +58,8 @@ int	open_file_input(char *file_name, int group)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putstr_fd(file_name, 2);
-		ft_putendl_fd(": No such file or directory", 2);
+		ft_putstr_fd(file_name, STDERR_FILENO);
+		ft_putendl_fd(": No such file or directory", STDERR_FILENO);
 		get_ms()->final_status = 1;
 		return (-1);
 	}
@@ -75,8 +75,8 @@ int	open_file_delimiter(char *file_name, char *delimiter, int group)
 	fd = open(".temp", O_RDWR | O_TRUNC | O_CREAT, 0644);
 	if (fd == -1)
 	{
-		ft_putstr_fd(file_name, 2);
-		ft_putendl_fd(": No such file or directory", 2);
+		ft_putstr_fd(file_name, STDERR_FILENO);
+		ft_putendl_fd(": No such file or directory", STDERR_FILENO);
 		get_ms()->final_status = 1;
 		return (-1);
 	}

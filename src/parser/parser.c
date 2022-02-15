@@ -6,29 +6,29 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:17 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 15:27:26 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:32:27 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	have_separator(char *line, int i)
+bool	have_separator(char *line, int i)
 {
 	if (i == 0)
 	{
 		if (line[i] == '|'
 			|| (line[i] == '>' && line[i + 1] == '>')
 			|| (line[i] == '<' && line[i + 1] == '<'))
-			return (1);
-		return (0);
+			return (true);
+		return (false);
 	}
 	if (line[i] == '|'
 		|| (line[i] == '>' && line[i + 1] == '>')
 		|| (line[i] == '<' && line[i + 1] == '<')
 		|| (line[i] == '>' && line[i + 1] != '>' && line[i - 1] != '>')
 		|| (line[i] == '<' && line[i + 1] != '<' && line[i - 1] != '<'))
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
 bool	check_aspas(char *line)
@@ -55,7 +55,7 @@ bool	check_aspas(char *line)
 	}
 	if (aspas)
 	{
-		ft_putendl_fd("Wrong quotes!", 2);
+		ft_putendl_fd("Wrong quotes!", STDERR_FILENO);
 		return (false);
 	}
 	return (true);
