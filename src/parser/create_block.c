@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:54:07 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/15 21:25:57 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/15 23:59:23 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	create_block(char *str)
 		return (handle_file(ms, i));
 	ms->blocks[i].cmd = ms->blocks[i].argv[0];
 	ms->blocks[i].path_cmd = get_path_cmd(ms->blocks[i].cmd);
-	if (ms->blocks[i].type == T_PIPE)
-		pipe(ms->blocks[i].pipe);
 	adjust_group(i, ms);
 	ms->size++;
 }
