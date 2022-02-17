@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expand_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:12:40 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 13:25:29 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:11:16 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-
-bool	key_can_continue(char c)
-{
-	if (c == ' ' || c == '\0')
-		return (false);
-	if (c == '\'' || c == '\"')
-		return (false);
-	if (c == '\t' || c == '=')
-		return (false);
-	if (c == '.' || c == ',')
-		return (false);
-	return (true);
-}
 
 char	*get_key(char *str, int *i)
 {
@@ -31,7 +18,7 @@ char	*get_key(char *str, int *i)
 	int		start;
 
 	start = *i;
-	while (key_can_continue(str[*i]))
+	while (ft_isalnum(str[*i]))
 		*i += 1;
 	key = ft_substr(str, start, *i - start);
 	return (key);
