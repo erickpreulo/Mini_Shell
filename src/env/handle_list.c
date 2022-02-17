@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:29:05 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/16 19:37:34 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/17 10:13:35 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	check_shlvl()
 	}
 	temp = ft_itoa(ft_atoi(shlvl) + 1);
 	shlvl = ft_strjoin("SHLVL=", temp);
-	printf("shlvl - %s\n", shlvl);
 	update_or_create_env(shlvl);
 	free(temp);
 	free(shlvl);

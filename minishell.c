@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 16:09:08 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 10:57:38 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char **argv, char **env)
 {
 	char	*line;
 
-	(void) argc;
-	(void) argv;
+	if (argc > 1)	
+		execve("/usr/bin/bash", argv, env);
 	start_signal();
 	get_env_list(env);
 	while (1)
