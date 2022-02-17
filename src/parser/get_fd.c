@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_fd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:57:39 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/15 20:32:14 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:25:46 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-
-void	check_old_fd(int fd_old)
-{
-	if (fd_old > 0)
-		close(fd_old);
-}
 
 int	open_file_output(char *file_name, int group)
 {
@@ -66,6 +60,14 @@ int	open_file_input(char *file_name, int group)
 	return (fd);
 }
 
+int	error_fd_delimiter(char *file_name)
+{
+	ft_putstr_fd(file_name, STDERR_FILENO);
+	ft_putendl_fd(": No such file or directory", STDERR_FILENO);
+	get_ms()->final_status = 1;
+	return (-1);
+}
+
 int	open_file_delimiter(char *file_name, char *delimiter, int group)
 {
 	int		fd;
@@ -74,12 +76,7 @@ int	open_file_delimiter(char *file_name, char *delimiter, int group)
 	line = 0;
 	fd = open(".temp", O_RDWR | O_TRUNC | O_CREAT, 0644);
 	if (fd == -1)
-	{
-		ft_putstr_fd(file_name, STDERR_FILENO);
-		ft_putendl_fd(": No such file or directory", STDERR_FILENO);
-		get_ms()->final_status = 1;
-		return (-1);
-	}
+		return (error_fd_delimiter(file_name));
 	ft_putstr_fd("> ", STDOUT_FILENO);
 	while (!get_ms()->sig_exit)
 	{	

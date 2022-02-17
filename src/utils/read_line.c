@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   read_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:08:44 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/15 16:28:54 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:20:51 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void	show_pwd()
+void	show_pwd(void)
 {
 	char	*pwd;
 
 	pwd = get_current_dir();
-
 	if (get_ms()->final_status)
 		ft_putstr_fd("\033[0;31m", STDOUT_FILENO);
 	else
@@ -28,7 +27,7 @@ void	show_pwd()
 	free(pwd);
 }
 
-char	*get_line()
+char	*get_line(void)
 {
 	char	*line;
 

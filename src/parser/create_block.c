@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_block.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:54:07 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/15 23:59:23 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:26:59 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ void	adjust_group(int i, t_mini_shell *ms)
 	ms->blocks[i].group = ms->group_size;
 }
 
-
-void clean_up_block(t_mini_shell *ms, int i)
+void	clean_up_block(t_mini_shell *ms, int i)
 {
 	int	j;
-	
+
 	if (ms->blocks[i].argv)
 	{
 		j = -1;
@@ -43,7 +42,6 @@ void clean_up_block(t_mini_shell *ms, int i)
 		ms->blocks[i].str = 0;
 	}
 }
-
 
 void	handle_file(t_mini_shell *ms, int i)
 {

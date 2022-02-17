@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 13:56:13 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 20:33:18 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:49:22 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-int	print_error_cd(char *msg, char* dir)
+int	print_error_cd(char *msg, char *dir)
 {
 	ft_putstr_fd("cd: ", STDERR_FILENO);
-	if (dir) {
+	if (dir)
+	{
 		ft_putstr_fd(dir, STDERR_FILENO);
 		free(dir);
 	}
@@ -27,6 +28,7 @@ char	*get_dir(int i)
 {
 	t_mini_shell	*ms;
 	char			*temp;
+
 	ms = get_ms();
 	if (!ms->blocks[i].argv[1]
 		|| ft_strcmp(ms->blocks[i].argv[1], "~") == 0)

@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 11:49:45 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/16 18:55:21 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/17 15:49:33 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	printf_err_num(t_mini_shell	*ms, char *arg)
 bool	check_arg_nbr(char *arg)
 {
 	int	i;
-	
+
 	i = -1;
 	while (arg[++i])
 		if (!ft_isdigit(arg[i]))

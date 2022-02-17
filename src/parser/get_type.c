@@ -6,7 +6,7 @@
 /*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:47 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/11 07:48:26 by egomes           ###   ########.fr       */
+/*   Updated: 2022/02/17 15:26:04 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ bool	is_separator(char c)
 	if (c == '|' || c == '>' || c == '<')
 		return (true);
 	return (false);
+}
+
+void	check_old_fd(int fd_old)
+{
+	if (fd_old > 0)
+		close(fd_old);
 }

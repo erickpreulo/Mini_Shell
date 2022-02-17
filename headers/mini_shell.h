@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_shell.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:20:19 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/17 10:58:06 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:32:55 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_mini_shell
 	int		exit_num;
 	bool	has_interrogation_key;
 	bool	searching_new_group;
+	pid_t	last_pid;
 }			t_mini_shell;
 
 typedef struct s_gamb
@@ -158,7 +159,8 @@ void			exit_safe(void);
 bool			check_valid_file(char *line);
 bool			is_separator(char c);
 void			del_env_content(void *env_temp);
-void			show_pwd();
-char			*get_line();
+void			show_pwd(void);
+char			*get_line(void);
+void			check_old_fd(int fd_old);
 
 #endif

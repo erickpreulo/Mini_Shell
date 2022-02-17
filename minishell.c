@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:18:55 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/17 11:08:27 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:36:02 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ t_mini_shell	*get_ms(void)
 void	check_script_mode(int argc, char **argv, char **env)
 {
 	if (argc == 1)
-		return;
-
-	execve("/usr/bin/bash", argv, env);
+		return ;
+	execve("/bin/bash", argv, env);
 	ft_putendl_fd("Error in non-interative mode execution", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

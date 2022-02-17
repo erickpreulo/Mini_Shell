@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_executor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 09:47:51 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 23:57:55 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:46:37 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ int	ft_executor(void)
 	i = -1;
 	while (++i < ms->size)
 	{
-		//printf("Executing %s ...\n", ms->blocks[i].argv[0]);
 		open_pipe(ms, i);
-		if (ms->fd_in[ms->blocks[i].group] == -1 )
-			continue;
+		if (ms->fd_in[ms->blocks[i].group] == -1)
+			continue ;
 		redirect_input(i);
 		redirect_output(i);
 		ms->final_status = select_cmd(i);

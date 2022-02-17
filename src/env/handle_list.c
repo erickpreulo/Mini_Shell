@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:29:05 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/17 10:13:35 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:49:50 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	del_env_content(void *env_temp)
 	free(env_temp);
 }
 
-void	check_shlvl()
+void	check_shlvl(void)
 {
 	char	*temp;
 	char	*shlvl;

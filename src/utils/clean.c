@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 01:27:57 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 21:27:03 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:21:21 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	clean_blocks_strs(t_mini_shell *ms)
 	}
 }
 
-void	clean_up()
+void	clean_up(void)
 {
 	t_mini_shell	*ms;
 

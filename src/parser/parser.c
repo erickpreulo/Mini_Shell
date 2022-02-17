@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:30:17 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/15 20:32:27 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:23:04 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ bool	check_aspas(char *line)
 	char		aspas;
 
 	aspas = 0;
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
 		while (line[i] != '\0' && line[i] != '\'' && line[i] != '\"')
 			i++;
@@ -51,7 +51,6 @@ bool	check_aspas(char *line)
 		if (i >= size)
 			break ;
 		aspas = '\0';
-		i++;
 	}
 	if (aspas)
 	{
@@ -88,9 +87,9 @@ void	parse_2(char *aspas, char *line, t_gamb *gamb)
 
 void	parse(char *line)
 {
-	const int size = ft_strlen(line);
-	t_gamb	gamb;
-	char	aspas;
+	const int	size = ft_strlen(line);
+	t_gamb		gamb;
+	char		aspas;
 
 	aspas = 0;
 	gamb.i = 0;
@@ -111,6 +110,5 @@ void	parse(char *line)
 		gamb.i++;
 	}
 	create_block(ft_substr(line, gamb.start, gamb.i));
-	//print_blocks();
 	ft_executor();
 }
