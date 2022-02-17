@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 00:29:05 by egomes            #+#    #+#             */
-/*   Updated: 2022/02/13 18:06:12 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:37:34 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,25 @@ void	del_env_content(void *env_temp)
 	free(env_temp);
 }
 
+void	check_shlvl()
+{
+	char	*temp;
+	char	*shlvl;
+
+	shlvl = get_env_value("SHLVL");
+	if (!shlvl)
+	{
+		update_or_create_env("SHLVL=1");
+		return ;
+	}
+	temp = ft_itoa(ft_atoi(shlvl) + 1);
+	shlvl = ft_strjoin("SHLVL=", temp);
+	printf("shlvl - %s\n", shlvl);
+	update_or_create_env(shlvl);
+	free(temp);
+	free(shlvl);
+}
+
 void	get_env_list(char **env)
 {
 	t_mini_shell	*ms;
@@ -47,4 +66,5 @@ void	get_env_list(char **env)
 		ft_lstadd_back(ms->lst_env, ft_lstnew(create_t_env(env[i])));
 		i++;
 	}
+	check_shlvl();
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_safe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: egomes <egomes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:32:37 by acanterg          #+#    #+#             */
-/*   Updated: 2022/02/13 17:23:42 by acanterg         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:32:23 by egomes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ void	exit_safe(void)
 	ms = get_ms();
 	free_lst_env();
 	clean_up();
+	if (ms->final_status)
+		exit(ms->final_status);
 	exit(ms->exit_num);
 }
